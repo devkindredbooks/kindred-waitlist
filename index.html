@@ -366,7 +366,7 @@ footer .logo{font-size:20px;color:var(--muted)}
 
     <button onclick="closeAndSubmit()" id="wl-close-btn" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;border:1px solid var(--brd);background:transparent;font-size:18px;cursor:pointer;color:var(--ghost);display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='#F0EAE2'" onmouseout="this.style.background='transparent'">&#215;</button>
 
-    <img src="images/kindredlogo.svg" alt="Kindred" style="height:52px;width:auto;display:block;margin-bottom:20px;mix-blend-mode:multiply">
+    <a href="/" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1.1;margin-bottom:20px;width:fit-content"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;letter-spacing:.01em"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span></a>
 
     <!-- SCREEN 0: SIGNUP -->
     <div id="wl-screen-0">
@@ -424,13 +424,10 @@ footer .logo{font-size:20px;color:var(--muted)}
       <div id="wl-screen-3" style="display:none">
         <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Your family</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:20px">How old are your <em style="font-style:italic;color:var(--terra);font-weight:500">children or grandchildren</em>?</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
-          <input id="wl-c1" type="text" placeholder="Child 1 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
-          <input id="wl-c2" type="text" placeholder="Child 2 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
-          <input id="wl-c3" type="text" placeholder="Child 3 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
-          <input id="wl-c4" type="text" placeholder="Child 4 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
-          <input id="wl-c5" type="text" placeholder="Child 5 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+        <div id="wl-children-list" style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+          <input id="wl-c1" type="text" placeholder="Child 1 age" style="width:100%;padding:13px 18px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
         </div>
+        <button id="wl-add-child-btn" onclick="addChild()" style="font-size:13px;color:var(--terra);background:none;border:1px dashed rgba(196,97,74,.4);border-radius:100px;padding:9px 20px;cursor:pointer;width:100%;margin-bottom:24px;transition:all .2s" onmouseover="this.style.borderColor='var(--terra)'" onmouseout="this.style.borderColor='rgba(196,97,74,.4)'">+ Add child</button>
         <div style="display:flex;gap:10px">
           <button onclick="goTo(2)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
           <button onclick="goTo(4)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
@@ -488,9 +485,17 @@ footer .logo{font-size:20px;color:var(--muted)}
       <div id="wl-screen-9" style="display:none" data-pid="p6">
         <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Does this ring true for your family?</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I find it hard to give <em style="font-style:italic;color:var(--terra);font-weight:500">truly meaningful gifts</em> to children, most things feel <em style="font-style:italic;color:var(--terra);font-weight:500">generic</em>.</p>
-        <div class="wl-scale-block" data-qid="p6" data-next="10" style="margin-bottom:28px"></div>
-        <div style="display:flex;gap:10px"><button onclick="goTo(8)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(10)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
-      
+        <div class="wl-scale-block" data-qid="p6" data-next="9b" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(8)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo('9b')" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05540'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo('9b')" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S9B: SOLUTION VALIDATION P7 -->
+      <div id="wl-screen-9b" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How excited are you?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px"><em style="font-style:italic;color:var(--terra);font-weight:500">Imagine:</em> Your real family memories, beautifully <em style="font-style:italic;color:var(--terra);font-weight:500">written for your child's developmental stage</em> and brought to life in <em style="font-style:italic;color:var(--terra);font-weight:500">watercolour illustration</em> — a book they'll read for the rest of their life.</p>
+        <div class="wl-scale-block" data-qid="p7" data-next="10" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(9)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(10)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
         <div style="text-align:center;margin-top:10px"><button onclick="goTo(10)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
       </div>
 
@@ -653,29 +658,23 @@ footer .logo{font-size:20px;color:var(--muted)}
 
 <script>
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM4MPxkFr2fGwD3nRQUyaW4ASHRztqg58irSw-R2gtHQSXZffNRx3qEf8w1-Wi0PI1/exec';
-var wlEmail = '', wlName = '', TOTAL = 15;
-var timings = {1:'About 4 min',2:'About 3.5 min',3:'About 3 min',4:'About 2.5 min',5:'About 2 min',6:'About 2 min',7:'About 1.5 min',8:'About 1.5 min',9:'About 1 min',10:'About 1 min',11:'About 45 sec',12:'About 30 sec',13:'About 20 sec',14:'About 15 sec',15:'Almost done'};
+var wlEmail = '', wlName = '', TOTAL = 16;
+var timings = {1:'About 5 min',2:'About 4 min',3:'About 3.5 min',4:'About 3 min',5:'About 2.5 min',6:'About 2 min',7:'About 2 min',8:'About 1.5 min',9:'About 1 min',10:'About 1 min',11:'About 45 sec',12:'About 30 sec',13:'About 20 sec',14:'About 15 sec',15:'Almost done',16:'Almost done'};
 
 function closeAndSubmit() {
   if (wlEmail) {
-    var data = {
+    var data = Object.assign({
       type:'survey', email:wlEmail, partial:'true',
       role:getSelected('wl-role-opts'),
-      child1Age:document.getElementById('wl-c1').value.trim(),
-      child2Age:document.getElementById('wl-c2').value.trim(),
-      child3Age:document.getElementById('wl-c3').value.trim(),
-      child4Age:document.getElementById('wl-c4').value.trim(),
-      child5Age:document.getElementById('wl-c5').value.trim(),
       p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
-      p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'),
-      priceRange:'A$' + (document.getElementById('wl-price-slider') ? document.getElementById('wl-price-slider').value : ''),
-      subPrice:'A$' + (document.getElementById('wl-sub-slider') ? document.getElementById('wl-sub-slider').value : '') + '/mo',
+      p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'), p7:getScore('p7'),
+      priceRange: (function(){ var el=document.getElementById('wl-price-slider'); return el && !el.getAttribute('data-skip') ? 'A$'+el.value : el && el.getAttribute('data-skip') ? 'Wouldn\'t pay' : ''; })(),
+      subPrice: (function(){ var el=document.getElementById('wl-sub-slider'); return el && !el.getAttribute('data-skip') ? 'A$'+el.value+'/mo' : el && el.getAttribute('data-skip') ? 'Wouldn\'t pay' : ''; })(),
       giftUsage:getSelected('wl-gift-opts'),
-      features:getFeatures(),
-      openMoment:document.getElementById('wl-open') ? document.getElementById('wl-open').value.trim() : '',
-      anythingElse:document.getElementById('wl-extra') ? document.getElementById('wl-extra').value.trim() : '',
+      openMoment:(function(){ var el=document.getElementById('wl-open'); return el ? el.value.trim() : ''; })(),
+      anythingElse:(function(){ var el=document.getElementById('wl-extra'); return el ? el.value.trim() : ''; })(),
       interviewWilling:getSelected('wl-interview-opts')
-    };
+    }, getChildAges(), getFeatures());
     fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).catch(function(){});
   }
   document.getElementById('wl-modal').style.display = 'none';
@@ -688,6 +687,7 @@ function openWaitlist() {
   goToScreen(0);
   document.getElementById('wl-name').value = '';
   document.getElementById('wl-email').value = '';
+  resetChildren();
   document.getElementById('wl-error').style.display = 'none';
   var btn = document.getElementById('wl-btn');
   btn.textContent = 'Join the waitlist';
@@ -706,14 +706,16 @@ document.getElementById('wl-modal').addEventListener('click', function(e) {
 
 function goToScreen(n) {
   document.getElementById('wl-screen-0').style.display = n === 0 ? 'block' : 'none';
-  document.getElementById('wl-survey').style.display = (n > 0 || n === '11b') ? 'block' : 'none';
+  document.getElementById('wl-survey').style.display = (n > 0 || n === '11b' || n === '9b') ? 'block' : 'none';
   for (var i = 1; i <= 16; i++) {
     var el = document.getElementById('wl-screen-' + i);
     if (el) el.style.display = (i === n) ? 'block' : 'none';
   }
   var el11b = document.getElementById('wl-screen-11b');
   if (el11b) el11b.style.display = (n === '11b') ? 'block' : 'none';
-  var numN = n === '11b' ? 11.5 : parseFloat(n);
+  var el9b = document.getElementById('wl-screen-9b');
+  if (el9b) el9b.style.display = (n === '9b') ? 'block' : 'none';
+  var numN = n === '11b' ? 11.5 : n === '9b' ? 9.5 : parseFloat(n);
   if (!isNaN(numN) && numN >= 1 && numN <= 15) {
     document.getElementById('wl-step-label').textContent = 'Step ' + Math.round(numN) + ' of ' + TOTAL;
     document.getElementById('wl-time-label').textContent = (timings[Math.round(numN)] || '') + ' remaining';
@@ -781,15 +783,64 @@ function toggleOther() {
   }
 }
 
+var FEATURE_KEYS = [
+  'Beautiful watercolour illustrations of my family',
+  'Monthly books with child as hero',
+  'Digital story updates to reading level',
+  'Audio narration in your own voice',
+  'Animated video version',
+  'Multiple languages',
+  'Special needs and sensory differences',
+  'Every book plants a tree'
+];
 function getFeatures() {
-  var vals = [];
-  document.getElementById('wl-feat-opts').querySelectorAll('.wl-feat-opt[data-selected="true"]').forEach(function(b) { vals.push(b.getAttribute('data-val')); });
-  var otherBtn = document.getElementById('wl-other-btn');
-  var otherInput = document.getElementById('wl-feat-other-input');
-  if (otherBtn && otherBtn.getAttribute('data-selected') === 'true' && otherInput.value.trim()) {
-    vals.push('Other: ' + otherInput.value.trim());
+  var sel = {};
+  document.getElementById('wl-feat-opts').querySelectorAll('.wl-feat-opt[data-selected="true"]').forEach(function(b) {
+    sel[b.getAttribute('data-val')] = 1;
+  });
+  var result = {};
+  FEATURE_KEYS.forEach(function(k) { result['feat_' + k] = sel[k] ? 1 : 0; });
+  return result;
+}
+
+var wlChildCount = 1;
+function addChild() {
+  if (wlChildCount >= 10) return;
+  wlChildCount++;
+  var list = document.getElementById('wl-children-list');
+  var inp = document.createElement('input');
+  inp.id = 'wl-c' + wlChildCount;
+  inp.type = 'text';
+  inp.placeholder = 'Child ' + wlChildCount + ' age';
+  inp.style.cssText = 'width:100%;padding:13px 18px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s';
+  inp.onfocus = function() { this.style.borderColor = 'var(--terra)'; };
+  inp.onblur = function() { this.style.borderColor = 'var(--brd)'; };
+  list.appendChild(inp);
+  inp.focus();
+  if (wlChildCount >= 10) {
+    var btn = document.getElementById('wl-add-child-btn');
+    if (btn) btn.style.display = 'none';
   }
-  return vals.join('; ');
+}
+
+function getChildAges() {
+  var result = {};
+  for (var i = 1; i <= 10; i++) {
+    var el = document.getElementById('wl-c' + i);
+    result['child' + i + 'Age'] = el ? el.value.trim() : '';
+  }
+  return result;
+}
+
+function resetChildren() {
+  wlChildCount = 1;
+  var list = document.getElementById('wl-children-list');
+  if (!list) return;
+  while (list.children.length > 1) list.removeChild(list.lastChild);
+  var c1 = document.getElementById('wl-c1');
+  if (c1) c1.value = '';
+  var btn = document.getElementById('wl-add-child-btn');
+  if (btn) btn.style.display = 'block';
 }
 
 function buildScales() {
@@ -827,10 +878,14 @@ function buildScales() {
   });
 }
 
+var scoreMap = {'Strongly disagree':1,'Disagree':2,'Neutral':3,'Agree':4,'Strongly agree':5};
 function getScore(qid) {
   var btns = document.querySelectorAll('[data-qid="' + qid + '"]');
   for (var i = 0; i < btns.length; i++) {
-    if (btns[i].getAttribute('data-selected') === 'true') return btns[i].getAttribute('data-val');
+    if (btns[i].getAttribute('data-selected') === 'true') {
+      var val = btns[i].getAttribute('data-val');
+      return scoreMap[val] !== undefined ? scoreMap[val] : val;
+    }
   }
   return '';
 }
@@ -858,18 +913,15 @@ function submitSurvey() {
   var data = {
     type:'survey', email:wlEmail,
     role:getSelected('wl-role-opts'),
-    child1Age:document.getElementById('wl-c1').value.trim(),
-    child2Age:document.getElementById('wl-c2').value.trim(),
-    child3Age:document.getElementById('wl-c3').value.trim(),
-    child4Age:document.getElementById('wl-c4').value.trim(),
-    child5Age:document.getElementById('wl-c5').value.trim(),
+    ...getChildAges(),
     p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
     p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'),
+    p7:getScore('p7'),
     priceRange: document.getElementById('wl-price-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-price-slider').value,
     subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
     subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
     giftUsage:getSelected('wl-gift-opts'),
-    features:getFeatures(),
+    ...getFeatures(),
     openMoment:document.getElementById('wl-open').value.trim(),
     anythingElse:document.getElementById('wl-extra').value.trim(),
     interviewWilling:getSelected('wl-interview-opts')
@@ -894,8 +946,11 @@ function submitSurvey() {
 
 <!-- FOOTER -->
 <footer>
-  <a href="/"><img src="images/kindredlogo.svg" alt="Kindred" style="height:44px;width:auto;display:block;opacity:0.6;mix-blend-mode:multiply"></a>
-  <p class="fc">© 2026 Kindred Books. All rights reserved.</p>
+  <a href="/" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1.1;opacity:0.6"><span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:.01em"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span><span style="font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span></a>
+  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+    <p class="fc">© 2026 Kindred Books. All rights reserved.</p>
+    <a href="/invest" style="font-size:12px;color:var(--ghost);text-decoration:none;border-bottom:1px solid rgba(181,169,158,.3);padding-bottom:1px;transition:color .2s;line-height:1" onmouseover="this.style.color='var(--terra)'" onmouseout="this.style.color='var(--ghost)'">Interested in backing Kindred?</a>
+  </div>
 </footer>
 
 <script>
