@@ -171,6 +171,9 @@ footer .logo{font-size:20px;color:var(--muted)}
   .page-cta{padding:72px 24px}
   footer{padding:24px 20px;flex-direction:column;gap:12px;text-align:center}
 }
+
+@keyframes wl-spin{to{transform:rotate(360deg)}}
+.wl-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:white;border-radius:50%;animation:wl-spin .7s linear infinite;vertical-align:middle;margin-right:8px}
 </style>
 </head>
 <body>
@@ -178,14 +181,14 @@ footer .logo{font-size:20px;color:var(--muted)}
 <!-- NAV -->
 <nav>
   <a href="/" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1.1"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:.01em"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span><span style="font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span></a>
-  <button onclick="openWaitlist()" class="nav-cta">Join the waitlist</button>
+  <button onclick="openWaitlist()" class="nav-cta">Join waitlist & share your thoughts</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1>The stories we tell shape <em>the people we become.</em></h1>
   <p class="hero-sub">Decades of child psychology point to the same truth: personal stories shape who children become. The stories you tell your child about your life together are the ones that matter most.</p>
-  <button onclick="openWaitlist()" class="btn-p" style="margin:28px auto 0;display:inline-block">Join the waitlist</button>
+  <button onclick="openWaitlist()" class="btn-p" style="margin:28px auto 0;display:inline-block">Join waitlist & share your thoughts</button>
 </section>
 
 <!-- INTRO STRIP -->
@@ -371,12 +374,12 @@ footer .logo{font-size:20px;color:var(--muted)}
     <!-- SCREEN 0: SIGNUP -->
     <div id="wl-screen-0">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.15;color:var(--ink);margin-bottom:8px">Your child's story, <em style="font-style:italic;color:var(--terra)">told beautifully.</em></h3>
-      <p style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:22px">We're building something special for families like yours. Join the waitlist and be first to know when Kindred is ready.</p>
+      <p style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:22px">We're building something special for families like yours. Join waitlist & share your thoughts and be first to know when Kindred is ready.</p>
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
         <input id="wl-name" type="text" placeholder="Your first name" style="width:100%;padding:13px 20px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='rgba(26,23,20,.14)'" />
         <input id="wl-email" type="email" placeholder="Your email address" style="width:100%;padding:13px 20px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='rgba(26,23,20,.14)'" />
       </div>
-      <button onclick="submitSignup()" id="wl-btn" style="width:100%;font-size:14px;font-weight:500;padding:15px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;margin-bottom:14px" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Join the waitlist</button>
+      <button onclick="submitSignup()" id="wl-btn" style="width:100%;font-size:14px;font-weight:500;padding:15px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;margin-bottom:14px" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Join waitlist & share your thoughts</button>
       <p id="wl-error" style="display:none;font-size:12px;color:var(--terra);margin-bottom:10px;text-align:center"></p>
       <div style="display:flex;align-items:flex-start;gap:9px;padding:12px 14px;background:var(--spale);border-radius:10px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2E5E3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -492,7 +495,7 @@ footer .logo{font-size:20px;color:var(--muted)}
 
       <!-- S9B: SOLUTION VALIDATION P7 -->
       <div id="wl-screen-9b" style="display:none">
-        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How excited are you?</p>
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you love this idea?</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px"><em style="font-style:italic;color:var(--terra);font-weight:500">Imagine:</em> Your real family memories, beautifully <em style="font-style:italic;color:var(--terra);font-weight:500">written for your child's developmental stage</em> and brought to life in <em style="font-style:italic;color:var(--terra);font-weight:500">watercolour illustration</em>, a book they'll read for the rest of their life.</p>
         <div class="wl-scale-block" data-qid="p7" data-next="10" style="margin-bottom:28px"></div>
         <div style="display:flex;gap:10px"><button onclick="goTo(9)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(10)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
@@ -502,18 +505,26 @@ footer .logo{font-size:20px;color:var(--muted)}
       <!-- S10: PRICING -->
       <div id="wl-screen-10" style="display:none">
         <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Pricing</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:28px">What would you <em style="font-style:italic;color:var(--terra);font-weight:500">pay</em> for a beautifully illustrated <em style="font-style:italic;color:var(--terra);font-weight:500">hardcover book</em> about your own family, delivered to your door?</p>
-        <div style="text-align:center;margin-bottom:10px">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)">A$<span id="wl-price-display">75</span></span>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:20px">What would you <em style="font-style:italic;color:var(--terra);font-weight:500">pay</em> for a beautifully illustrated <em style="font-style:italic;color:var(--terra);font-weight:500">hardcover book</em> about your own family, delivered to your door?</p>
+
+        <div style="text-align:center;margin-bottom:8px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)"><span id="wl-price-symbol">A$</span><span id="wl-price-display">0</span></span>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-          <span style="font-size:11px;color:var(--ghost)">A$20</span>
-          <span style="font-size:11px;color:var(--ghost)">A$150</span>
+          <span id="wl-price-min-label" style="font-size:11px;color:var(--ghost)">A$0</span>
+          <span id="wl-price-max-label" style="font-size:11px;color:var(--ghost)">A$150</span>
         </div>
-        <input id="wl-price-slider" type="range" min="20" max="150" step="5" value="75"
+        <input id="wl-price-slider" type="range" min="0" max="150" step="5" value="0"
           oninput="document.getElementById('wl-price-display').textContent=this.value"
-          style="width:100%;accent-color:var(--terra);margin-bottom:32px;cursor:pointer" />
-        <div style="display:flex;gap:10px">
+          style="width:100%;accent-color:var(--terra);margin-bottom:12px;cursor:pointer" />
+
+        <!-- Currency selector (below slider) -->
+        <div style="display:flex;gap:8px;margin-bottom:20px">
+          <button id="cur-aud" onclick="setCurrency('AUD')" style="flex:1;font-size:12px;font-weight:500;padding:7px 0;border-radius:100px;border:1px solid var(--terra);background:var(--tpale);color:#7A3020;cursor:pointer;transition:all .2s">A$ AUD</button>
+          <button id="cur-gbp" onclick="setCurrency('GBP')" style="flex:1;font-size:12px;font-weight:400;padding:7px 0;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;transition:all .2s">£ GBP</button>
+          <button id="cur-usd" onclick="setCurrency('USD')" style="flex:1;font-size:12px;font-weight:400;padding:7px 0;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;transition:all .2s">$ USD</button>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:0">
           <button onclick="goTo('9b')" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
           <button onclick="goTo(11)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
         </div>
@@ -540,16 +551,22 @@ footer .logo{font-size:20px;color:var(--muted)}
         <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Subscription</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:10px">What would you pay per month for a <em style="font-style:italic;color:var(--terra);font-weight:500">digital subscription</em>?</p>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:28px">One digital book a month, or 2 printed hardcovers a year, plus your growing digital library.</p>
-        <div style="text-align:center;margin-bottom:10px">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)">A$<span id="wl-sub-display">15</span><span style="font-size:20px;color:var(--ghost)">/mo</span></span>
+        <!-- Sub currency selector -->
+        <div style="display:flex;gap:8px;margin-bottom:20px">
+          <button id="scur-aud" onclick="setCurrency('AUD')" style="flex:1;font-size:13px;font-weight:500;padding:9px 0;border-radius:100px;border:1px solid var(--terra);background:var(--tpale);color:#7A3020;cursor:pointer;transition:all .2s">A$ AUD</button>
+          <button id="scur-gbp" onclick="setCurrency('GBP')" style="flex:1;font-size:13px;font-weight:400;padding:9px 0;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;transition:all .2s">£ GBP</button>
+          <button id="scur-usd" onclick="setCurrency('USD')" style="flex:1;font-size:13px;font-weight:400;padding:9px 0;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;transition:all .2s">$ USD</button>
+        </div>
+        <div style="text-align:center;margin-bottom:8px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)"><span id="wl-sub-symbol">A$</span><span id="wl-sub-display">0</span><span style="font-size:20px;color:var(--ghost)">/mo</span></span>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-          <span style="font-size:11px;color:var(--ghost)">A$5</span>
-          <span style="font-size:11px;color:var(--ghost)">A$40</span>
+          <span id="wl-sub-min-label" style="font-size:11px;color:var(--ghost)">A$0</span>
+          <span id="wl-sub-max-label" style="font-size:11px;color:var(--ghost)">A$40</span>
         </div>
-        <input id="wl-sub-slider" type="range" min="5" max="40" step="1" value="15"
+        <input id="wl-sub-slider" type="range" min="0" max="40" step="1" value="0"
           oninput="document.getElementById('wl-sub-display').textContent=this.value"
-          style="width:100%;accent-color:var(--terra);margin-bottom:32px;cursor:pointer" />
+          style="width:100%;accent-color:var(--terra);margin-bottom:24px;cursor:pointer" />
         <div style="display:flex;gap:10px">
           <button onclick="goTo(11)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
           <button onclick="goTo(12)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
@@ -651,13 +668,13 @@ footer .logo{font-size:20px;color:var(--muted)}
 <section class="page-cta" id="waitlist">
   <p class="eyebrow" style="margin-bottom:18px">Be first to know</p>
   <h2>Ready to give your child<br>a story that's <em>truly theirs?</em></h2>
-  <p>Join the waitlist and be among the first families to create a Kindred book.</p>
-  <button onclick="openWaitlist()" class="btn-p">Join the waitlist</button>
+  <p>Join waitlist & share your thoughts and be among the first families to create a Kindred book.</p>
+  <button onclick="openWaitlist()" class="btn-p">Join waitlist & share your thoughts</button>
   <p class="cta-note">No spam. Just a note when we're ready for you.</p>
 </section>
 
 <script>
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM4MPxkFr2fGwD3nRQUyaW4ASHRztqg58irSw-R2gtHQSXZffNRx3qEf8w1-Wi0PI1/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNKPxX5MysjweegI7I5F_SRToF49GhVaaxBgNY1B9_zUMXRYAK1kUYPDDzkiv_O4Te/exec';
 var wlEmail = '', wlName = '', TOTAL = 16;
 var timings = {1:'About 5 min',2:'About 4 min',3:'About 3.5 min',4:'About 3 min',5:'About 2.5 min',6:'About 2 min',7:'About 2 min',8:'About 1.5 min',9:'About 1 min',10:'About 1 min',11:'About 45 sec',12:'About 30 sec',13:'About 20 sec',14:'About 15 sec',15:'Almost done',16:'Almost done'};
 
@@ -668,8 +685,15 @@ function closeAndSubmit() {
       role:getSelected('wl-role-opts'),
       p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
       p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'), p7:getScore('p7'),
-      priceRange: (function(){ var el=document.getElementById('wl-price-slider'); return el && !el.getAttribute('data-skip') ? 'A$'+el.value : el && el.getAttribute('data-skip') ? 'Wouldn\'t pay' : ''; })(),
-      subPrice: (function(){ var el=document.getElementById('wl-sub-slider'); return el && !el.getAttribute('data-skip') ? 'A$'+el.value+'/mo' : el && el.getAttribute('data-skip') ? 'Wouldn\'t pay' : ''; })(),
+      priceRangeAUD: activeCurrency==='AUD' ? (function(){ var el=document.getElementById('wl-price-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      priceRangeGBP: activeCurrency==='GBP' ? (function(){ var el=document.getElementById('wl-price-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      priceRangeUSD: activeCurrency==='USD' ? (function(){ var el=document.getElementById('wl-price-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      subPriceAUD: activeCurrency==='AUD' ? (function(){ var el=document.getElementById('wl-sub-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      subPriceGBP: activeCurrency==='GBP' ? (function(){ var el=document.getElementById('wl-sub-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      subPriceUSD: activeCurrency==='USD' ? (function(){ var el=document.getElementById('wl-sub-slider'); return el ? (el.getAttribute('data-skip') ? "Wouldn't pay" : parseInt(el.value)) : ''; })() : '',
+      locationCity: locationCity,
+      locationRegion: locationRegion,
+      locationCountry: locationCountry,
       giftUsage:getSelected('wl-gift-opts'),
       openMoment:(function(){ var el=document.getElementById('wl-open'); return el ? el.value.trim() : ''; })(),
       anythingElse:(function(){ var el=document.getElementById('wl-extra'); return el ? el.value.trim() : ''; })(),
@@ -685,12 +709,13 @@ function openWaitlist() {
   document.getElementById('wl-modal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
   goToScreen(0);
+  initCurrency();
   document.getElementById('wl-name').value = '';
   document.getElementById('wl-email').value = '';
   resetChildren();
   document.getElementById('wl-error').style.display = 'none';
   var btn = document.getElementById('wl-btn');
-  btn.textContent = 'Join the waitlist';
+  btn.innerHTML = 'Join waitlist &amp; share your thoughts';
   btn.style.opacity = '1';
   btn.disabled = false;
 }
@@ -803,6 +828,93 @@ function getFeatures() {
   return result;
 }
 
+// Currency config
+var currencies = {
+  AUD: { symbol: 'A$', min: 0, max: 150, step: 5, default: 0, subMin: 0, subMax: 40, subDefault: 0, subStep: 1 },
+  GBP: { symbol: '£',  min: 0, max: 100, step: 5, default: 0, subMin: 0, subMax: 25, subDefault: 0, subStep: 1 },
+  USD: { symbol: '$',  min: 0, max: 120, step: 5, default: 0, subMin: 0, subMax: 30, subDefault: 0, subStep: 1 }
+};
+var activeCurrency = 'AUD';
+var locationCity = '', locationRegion = '', locationCountry = '';
+
+function detectCurrency() {
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    if (tz.indexOf('London') !== -1 || tz.indexOf('Europe/') !== -1) return 'GBP';
+    if (tz.indexOf('America/') !== -1 || tz.indexOf('US/') !== -1) return 'USD';
+  } catch(e) {}
+  return 'AUD';
+}
+
+function setCurrency(code) {
+  activeCurrency = code;
+  var cfg = currencies[code];
+  // Update slider
+  var slider = document.getElementById('wl-price-slider');
+  slider.min = cfg.min; slider.max = cfg.max; slider.step = cfg.step;
+  slider.value = cfg.default;
+  slider.removeAttribute('data-skip');
+  document.getElementById('wl-price-display').textContent = cfg.default;
+  document.getElementById('wl-price-symbol').textContent = cfg.symbol;
+  document.getElementById('wl-price-min-label').textContent = cfg.symbol + cfg.min;
+  document.getElementById('wl-price-max-label').textContent = cfg.symbol + cfg.max;
+  // Update sub slider
+  var subSlider = document.getElementById('wl-sub-slider');
+  if (subSlider) {
+    subSlider.min = cfg.subMin; subSlider.max = cfg.subMax; subSlider.step = cfg.subStep;
+    subSlider.value = cfg.subDefault;
+    subSlider.removeAttribute('data-skip');
+    document.getElementById('wl-sub-display').textContent = cfg.subDefault;
+    document.getElementById('wl-sub-symbol').textContent = cfg.symbol;
+    document.getElementById('wl-sub-min-label').textContent = cfg.symbol + cfg.subMin;
+    document.getElementById('wl-sub-max-label').textContent = cfg.symbol + cfg.subMax;
+  }
+  // Update currency buttons
+  ['AUD','GBP','USD'].forEach(function(c) {
+    var btn = document.getElementById('cur-' + c.toLowerCase());
+    if (btn) {
+      if (c === code) {
+        btn.style.borderColor = 'var(--terra)'; btn.style.background = 'var(--tpale)';
+        btn.style.color = '#7A3020'; btn.style.fontWeight = '500';
+      } else {
+        btn.style.borderColor = 'var(--brd)'; btn.style.background = 'var(--cream)';
+        btn.style.color = 'var(--soft)'; btn.style.fontWeight = '400';
+      }
+    }
+  });
+  // Mirror to sub screen
+  ['aud','gbp','usd'].forEach(function(x) {
+    var sb = document.getElementById('scur-' + x);
+    if (sb) {
+      if (x.toUpperCase() === code) {
+        sb.style.borderColor = 'var(--terra)'; sb.style.background = 'var(--tpale)';
+        sb.style.color = '#7A3020'; sb.style.fontWeight = '500';
+      } else {
+        sb.style.borderColor = 'var(--brd)'; sb.style.background = 'var(--cream)';
+        sb.style.color = 'var(--soft)'; sb.style.fontWeight = '400';
+      }
+    }
+  });
+}
+
+function initCurrency() {
+  var fallback = detectCurrency();
+  setCurrency(fallback);
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      locationCity = d.city || '';
+      locationRegion = d.region || '';
+      locationCountry = d.country_name || '';
+      var code = fallback;
+      if (d.country_code === 'GB') code = 'GBP';
+      else if (d.country_code === 'US') code = 'USD';
+      else if (d.country_code === 'AU') code = 'AUD';
+      setCurrency(code);
+    })
+    .catch(function(){ /* silent fail, keep fallback */ });
+}
+
 var wlChildCount = 1;
 function addChild() {
   if (wlChildCount >= 10) return;
@@ -901,7 +1013,7 @@ function submitSignup() {
   if (!name) { error.textContent = 'Please enter your first name.'; error.style.display = 'block'; return; }
   if (!email || !email.includes('@')) { error.textContent = 'Please enter a valid email address.'; error.style.display = 'block'; return; }
   wlName = name; wlEmail = email;
-  btn.textContent = 'Joining...'; btn.style.opacity = '0.7'; btn.disabled = true;
+  btn.innerHTML = '<span class="wl-spinner"></span>Joining...'; btn.style.opacity = '0.85'; btn.disabled = true;
   document.getElementById('wl-greeting').textContent = 'Thanks ' + name + '. A few quick questions to help us build Kindred for families like yours.';
   fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({type:'signup',name:name,email:email}) })
     .then(function() { goToScreen(1); }).catch(function() { goToScreen(1); });
@@ -917,9 +1029,15 @@ function submitSurvey() {
     p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
     p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'),
     p7:getScore('p7'),
-    priceRange: document.getElementById('wl-price-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-price-slider').value,
-    subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
-    subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
+    priceRangeAUD: activeCurrency==='AUD' ? (document.getElementById('wl-price-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-price-slider').value)) : '',
+    priceRangeGBP: activeCurrency==='GBP' ? (document.getElementById('wl-price-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-price-slider').value)) : '',
+    priceRangeUSD: activeCurrency==='USD' ? (document.getElementById('wl-price-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-price-slider').value)) : '',
+    subPriceAUD: activeCurrency==='AUD' ? (document.getElementById('wl-sub-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-sub-slider').value)) : '',
+    subPriceGBP: activeCurrency==='GBP' ? (document.getElementById('wl-sub-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-sub-slider').value)) : '',
+    subPriceUSD: activeCurrency==='USD' ? (document.getElementById('wl-sub-slider').getAttribute('data-skip') ? "Wouldn't pay" : parseInt(document.getElementById('wl-sub-slider').value)) : '',
+    locationCity: locationCity,
+    locationRegion: locationRegion,
+    locationCountry: locationCountry,
     giftUsage:getSelected('wl-gift-opts'),
     ...getFeatures(),
     openMoment:document.getElementById('wl-open').value.trim(),
