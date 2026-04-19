@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Science Behind Kindred</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#FAF7F2;color:#1A1714;overflow-x:hidden}
+:root{
+  --cream:#FAF7F2;--cw:#FDFAF6;--ink:#1A1714;--soft:#3D3730;--muted:#7A6E66;--ghost:#B5A99E;
+  --terra:#C4614A;--tpale:#F0DDD8;--tmid:#E8C8C0;
+  --sage:#7A9E82;--spale:#DFF0E4;
+  --gold:#D4A44C;--gpale:#F5EDD6;
+  --brd:rgba(26,23,20,0.07);--shd:rgba(26,23,20,0.12);
+}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(250,247,242,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--brd)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo em{font-style:italic;color:var(--terra)}
+.nav-cta{font-size:13px;font-weight:500;padding:9px 24px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:background .2s,transform .2s;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:#B05340;transform:translateY(-1px)}
+
+/* HERO */
+.hero{max-width:760px;margin:0 auto;padding:88px 56px 72px;text-align:center}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:22px}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,72px);font-weight:300;line-height:1.07;letter-spacing:-.025em;color:var(--ink);margin-bottom:24px}
+h1 em{font-style:italic;color:var(--terra)}
+.hero-sub{font-size:17px;font-weight:300;line-height:1.85;color:var(--muted);max-width:600px;margin:0 auto 20px}
+.hero-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:300;line-height:1.7;color:var(--soft);max-width:520px;margin:32px auto 0;padding:0 20px;border-left:2px solid var(--tmid);text-align:left}
+.hero-quote cite{display:block;font-style:normal;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-top:10px}
+
+/* INTRO STRIP */
+.intro-strip{background:var(--ink);padding:64px 56px;position:relative;overflow:hidden}
+.intro-strip::before{content:'';position:absolute;width:500px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,97,74,.14),transparent 70%);top:-80px;right:-80px;pointer-events:none}
+.intro-strip::after{content:'';position:absolute;width:400px;height:350px;border-radius:50%;background:radial-gradient(ellipse,rgba(122,158,130,.09),transparent 70%);bottom:-60px;left:-40px;pointer-events:none}
+.intro-inner{max-width:880px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.intro-strip .eyebrow{color:rgba(250,247,242,.3);margin-bottom:18px}
+.intro-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--cream);line-height:1.15;letter-spacing:-.02em;margin-bottom:22px}
+.intro-h2 em{font-style:italic;color:#E8A870}
+.intro-body{font-size:15px;font-weight:300;line-height:1.9;color:rgba(250,247,242,.55);max-width:620px;margin:0 auto}
+
+/* THREE PILLARS */
+.pillars{max-width:1100px;margin:0 auto;padding:96px 56px}
+.pillars-head{text-align:center;margin-bottom:64px}
+.sec-lbl{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:14px}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,52px);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.sec-h2 em{font-style:italic;color:var(--terra)}
+.sec-sub{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);max-width:520px;margin:0 auto}
+
+/* Pillar cards */
+.pillar{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:96px;padding-bottom:96px;border-bottom:1px solid var(--brd)}
+.pillar:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.pillar.flip{direction:rtl}
+.pillar.flip>*{direction:ltr}
+
+.pillar-visual{position:relative}
+.pillar-card{border-radius:20px;background:var(--cw);border:1px solid var(--brd);padding:36px;position:relative;overflow:hidden}
+.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0}
+.p1 .pillar-card::before{background:var(--terra)}
+.p2 .pillar-card::before{background:var(--sage)}
+.p3 .pillar-card::before{background:var(--gold)}
+.pillar-glow{position:absolute;bottom:-30px;right:-30px;width:200px;height:200px;border-radius:50%;filter:blur(60px);opacity:.18;pointer-events:none}
+.p1 .pillar-glow{background:var(--terra)}
+.p2 .pillar-glow{background:var(--sage)}
+.p3 .pillar-glow{background:var(--gold)}
+
+.pillar-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:1;margin-bottom:8px}
+.p1 .pillar-num{color:var(--tpale)}
+.p2 .pillar-num{color:var(--spale)}
+.p3 .pillar-num{color:var(--gpale)}
+
+.pillar-headline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:300;line-height:1.4;color:var(--soft);margin-bottom:24px}
+
+.research-chips{display:flex;flex-direction:column;gap:10px}
+.chip{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:10px}
+.p1 .chip{background:var(--tpale)}
+.p2 .chip{background:var(--spale)}
+.p3 .chip{background:var(--gpale)}
+.chip-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.p1 .chip-dot{background:var(--terra)}
+.p2 .chip-dot{background:var(--sage)}
+.p3 .chip-dot{background:var(--gold)}
+.chip-text{font-size:12px;line-height:1.6}
+.p1 .chip-text{color:#7A3020}
+.p2 .chip-text{color:#2E5E3A}
+.p3 .chip-text{color:#7A5818}
+.chip-text strong{font-weight:500;display:block;margin-bottom:1px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Pillar content */
+.pillar-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:20px}
+.p1 .pillar-tag{background:var(--tpale);color:#7A3020}
+.p2 .pillar-tag{background:var(--spale);color:#2E5E3A}
+.p3 .pillar-tag{background:var(--gpale);color:#7A5818}
+
+.pillar-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.5vw,44px);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+.pillar-title em{font-style:italic;color:var(--terra)}
+.p2 .pillar-title em{color:var(--sage)}
+.p3 .pillar-title em{color:var(--gold)}
+
+.pillar-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--muted);margin-bottom:22px}
+
+.pillar-truth{border-radius:12px;padding:18px 22px;margin-bottom:22px}
+.p1 .pillar-truth{background:var(--tpale)}
+.p2 .pillar-truth{background:var(--spale)}
+.p3 .pillar-truth{background:var(--gpale)}
+.pillar-truth-lbl{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.p1 .pillar-truth-lbl{color:#7A3020}
+.p2 .pillar-truth-lbl{color:#2E5E3A}
+.p3 .pillar-truth-lbl{color:#7A5818}
+.pillar-truth-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.65}
+.p1 .pillar-truth-q{color:#5A2A18}
+.p2 .pillar-truth-q{color:#1A4A28}
+.p3 .pillar-truth-q{color:#5A3A10}
+
+/* ADVISORS */
+.advisors{background:var(--cw);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:88px 56px}
+.advisors-inner{max-width:1100px;margin:0 auto}
+.advisors-head{text-align:center;margin-bottom:56px}
+.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.adv-card{background:var(--cream);border:1px solid var(--brd);border-radius:16px;padding:28px 30px;display:flex;gap:20px;align-items:flex-start}
+.adv-avatar{width:52px;height:52px;border-radius:50%;background:var(--tpale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--terra)}
+.adv-avatar.sage{background:var(--spale);color:var(--sage)}
+.adv-avatar.gold{background:var(--gpale);color:var(--gold)}
+.adv-avatar.soft{background:rgba(26,23,20,.06);color:var(--soft)}
+.adv-inst{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:4px}
+.adv-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2}
+.adv-role{font-size:13px;font-weight:300;line-height:1.6;color:var(--muted)}
+
+/* STATS BAR */
+.stats-bar{background:linear-gradient(135deg,#C4614A 0%,#D4884A 40%,#C4614A 100%);padding:64px 56px}
+.stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center;align-items:end}
+.stat-item{padding:0 32px;border-right:1px solid rgba(255,255,255,.18)}
+.stat-item:last-child{border-right:none}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,64px);font-weight:300;color:#FEFCF8;line-height:1;margin-bottom:10px}
+.stat-l{font-size:13px;font-weight:300;color:rgba(255,248,240,.65);line-height:1.6;max-width:160px;margin:0 auto}
+
+/* CTA */
+.page-cta{text-align:center;padding:96px 56px;background:linear-gradient(160deg,#EDD4C8 0%,#FAF7F2 45%,#EDD4C8 100%);border-top:1px solid rgba(196,97,74,.18)}
+.page-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:1.1;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+.page-cta h2 em{font-style:italic;color:var(--terra)}
+.page-cta p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+.btn-p{font-size:14px;font-weight:500;padding:16px 40px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-p:hover{background:#B05340;transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,97,74,.3)}
+.cta-note{font-size:13px;color:var(--ghost);margin-top:16px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--brd);padding:28px 56px;display:flex;align-items:center;justify-content:space-between}
+footer .logo{font-size:20px;color:var(--muted)}
+.fc{font-size:12px;color:var(--ghost)}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 20px;height:58px}
+  .hero{padding:56px 24px 52px}
+  .intro-strip{padding:48px 24px}
+  .pillars{padding:64px 24px}
+  .pillar{grid-template-columns:1fr;gap:40px;margin-bottom:64px;padding-bottom:64px}
+  .pillar.flip{direction:ltr}
+  .advisors{padding:64px 24px}
+  .adv-grid{grid-template-columns:1fr}
+  .stats-bar{padding:48px 24px}
+  .stats-inner{grid-template-columns:1fr;gap:40px}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.18);padding:0 0 40px}
+  .stat-item:last-child{border-bottom:none;padding-bottom:0}
+  .page-cta{padding:72px 24px}
+  footer{padding:24px 20px;flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/"><img src="kindred_logo.png" alt="Kindred" style="height:38px;width:auto;display:block"></a>
+  <button onclick="openWaitlist()" class="nav-cta">Join the waitlist</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">The science of kindred</p>
+  <h1>Books that do more than <em>tell a story</em></h1>
+  <p class="hero-sub">Every Kindred book is built on something child psychologists have understood for decades: the stories children hear about their own life shape who they become.</p>
+  <button onclick="openWaitlist()" class="btn-p" style="margin:28px auto 0;display:inline-block">Join the waitlist</button>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.5vw,26px);font-weight:300;line-height:1.5;color:var(--soft);max-width:560px;margin:36px auto 0">The stories you tell your child about your life together are some of the most important things you will ever give them.</p>
+</section>
+
+<!-- INTRO STRIP -->
+<section class="intro-strip">
+  <div class="intro-inner">
+    <p class="eyebrow">Why it matters</p>
+    <h2 class="intro-h2">Most children's books are about <em>someone else.</em><br>Kindred books are about them.</h2>
+    <p class="intro-body">Children form their identity, resilience, and sense of belonging through stories told about their own life. We've built a platform that makes those stories effortless to create, and beautiful enough to last a lifetime.</p>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars">
+  <div class="pillars-head">
+    <p class="sec-lbl">Three things we care about deeply</p>
+    <h2 class="sec-h2">The research behind <em>every book</em></h2>
+    <p class="sec-sub">Each pillar is grounded in peer-reviewed child development research; not a marketing claim, but the foundation every Kindred book is built on.</p>
+  </div>
+
+  <!-- PILLAR 1 -->
+  <div class="pillar p1">
+    <div class="pillar-content">
+      <span class="pillar-tag">Pillar one</span>
+      <h2 class="pillar-title">A stronger<br><em>family connection</em></h2>
+      <p class="pillar-body">Prof. Robyn Fivush at Emory University spent decades studying <em>elaborative reminiscing</em>: parents narrating shared experiences with their children. Her research shows that families who regularly tell personal stories together raise children with richer autobiographical memory and a stronger sense of identity. Dr. Erica Komisar's attachment research adds a complementary finding: physical, emotionally resonant objects like books support secure parent-child attachment during the critical early years.</p>
+      <div class="pillar-truth">
+        <p class="pillar-truth-lbl">The simple truth</p>
+        <p class="pillar-truth-q">The stories you tell your child about your life together are some of the most important things you will ever give them.</p>
+      </div>
+    </div>
+    <div class="pillar-visual">
+      <div class="pillar-card">
+        <div class="pillar-glow"></div>
+        <div class="pillar-num">01</div>
+        <p class="pillar-headline">Children whose families share personal stories grow up with a deeper sense of where they belong.</p>
+        <div class="research-chips">
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>Elaborative Reminiscing</strong>Prof. Robyn Fivush, Emory University. Narrating shared experiences shapes autobiographical memory, identity development, and a child's sense of belonging.</div>
+          </div>
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>Attachment Theory</strong>Dr. Erica Komisar. Physical, emotionally resonant objects support secure attachment during critical early developmental windows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR 2 -->
+  <div class="pillar p2 flip">
+    <div class="pillar-content">
+      <span class="pillar-tag">Pillar two</span>
+      <h2 class="pillar-title">A clear sense of<br><em>self and identity</em></h2>
+      <p class="pillar-body">The self-referential effect, confirmed in a meta-analysis of 129 studies, shows that children remember information about themselves significantly more than other information. Prof. Dan McAdams's narrative identity research builds on this: children who develop a strong personal narrative grow into adults with greater emotional clarity and self-understanding.</p>
+      <div class="pillar-truth">
+        <p class="pillar-truth-lbl">The simple truth</p>
+        <p class="pillar-truth-q">Children who know their own story grow up knowing who they are.</p>
+      </div>
+    </div>
+    <div class="pillar-visual">
+      <div class="pillar-card">
+        <div class="pillar-glow"></div>
+        <div class="pillar-num">02</div>
+        <p class="pillar-headline">Children remember stories about themselves more than any other kind.</p>
+        <div class="research-chips">
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>The Self-Referential Effect</strong>Symons &amp; Johnson meta-analysis of 129 studies. Children retain information about themselves far more readily than other information.</div>
+          </div>
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>Narrative Identity</strong>Prof. Dan McAdams, Northwestern University. A coherent personal narrative in childhood predicts greater emotional clarity and self-understanding in adulthood.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR 3 -->
+  <div class="pillar p3">
+    <div class="pillar-content">
+      <span class="pillar-tag">Pillar three</span>
+      <h2 class="pillar-title">Emotional resilience<br><em>that lasts a lifetime</em></h2>
+      <p class="pillar-body">Dr. Dan Siegel at UCLA found that shared storytelling helps children integrate emotional experiences; building the neural pathways for self-regulation and resilience. His "name it to tame it" framework shows that children who can narrate their experiences are better equipped to handle them. A book about their own life isn't just a keepsake; it's a tool for making sense of the world.</p>
+      <div class="pillar-truth">
+        <p class="pillar-truth-lbl">The simple truth</p>
+        <p class="pillar-truth-q">Children who can tell the story of what happened to them are better equipped to grow from it.</p>
+      </div>
+    </div>
+    <div class="pillar-visual">
+      <div class="pillar-card">
+        <div class="pillar-glow"></div>
+        <div class="pillar-num">03</div>
+        <p class="pillar-headline">Helping children narrate their experiences builds the foundation for lifelong emotional resilience.</p>
+        <div class="research-chips">
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>Interpersonal Neurobiology</strong>Dr. Dan Siegel, UCLA. Shared storytelling integrates left and right brain hemispheres, building emotional regulation and resilience.</div>
+          </div>
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <div class="chip-text"><strong>Narrative Reminiscing</strong>Prof. Robyn Fivush, Emory University. Families who use elaborative reminiscing show measurable improvements in children's emotional vocabulary and self-understanding.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-n">129</div>
+      <div class="stat-l">peer-reviewed studies underpinning the self-referential effect; Symons &amp; Johnson, 1997</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">1977</div>
+      <div class="stat-l">when the self-referential effect was first established; research has confirmed it ever since</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n" style="font-size:clamp(22px,3vw,32px);line-height:1.2">early childhood</div>
+      <div class="stat-l">the years when narrative reminiscing has its deepest and most lasting developmental impact</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCHERS -->
+<section class="advisors">
+  <div class="advisors-inner">
+    <div class="advisors-head">
+      <p class="sec-lbl">The research behind kindred</p>
+      <h2 class="sec-h2">Grounded in the work of <em>pioneering researchers</em></h2>
+      <p class="sec-sub" style="font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);max-width:520px;margin:0 auto">These are the researchers whose decades of work form the foundation of every book we create.</p>
+    </div>
+    <div class="adv-grid" style="grid-template-columns:1fr 1fr;max-width:800px;margin:0 auto">
+      <div class="adv-card">
+        <div class="adv-avatar">RF</div>
+        <div>
+          <p class="adv-inst">Emory University</p>
+          <p class="adv-name">Prof. Robyn Fivush</p>
+          <p class="adv-role">Pioneer of elaborative reminiscing research. Her work on how narrating shared experiences shapes autobiographical memory and identity development is the scientific spine of Kindred.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar sage">EK</div>
+        <div>
+          <p class="adv-inst">Clinical Social Worker &amp; Author</p>
+          <p class="adv-name">Dr. Erica Komisar</p>
+          <p class="adv-role">Attachment theory and early childhood emotional development. Her research on physical objects and secure attachment informs how we think about the books we make.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar gold">DS</div>
+        <div>
+          <p class="adv-inst">UCLA - Mindsight Institute</p>
+          <p class="adv-name">Dr. Dan Siegel</p>
+          <p class="adv-role">Author of <em>The Whole-Brain Child</em>. His interpersonal neurobiology research on shared storytelling, emotional integration, and the "name it to tame it" framework directly informs Kindred's narrative approach.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar soft">DM</div>
+        <div>
+          <p class="adv-inst">Northwestern University</p>
+          <p class="adv-name">Prof. Dan McAdams</p>
+          <p class="adv-role">Narrative identity research. His work on personal narrative and emotional development in childhood underpins the identity pillar of every Kindred book.</p>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--ghost);margin-top:36px;line-height:1.7;max-width:580px;margin-left:auto;margin-right:auto">The researchers named above are referenced solely on the basis of their published academic work. Kindred has no current affiliation, advisory relationship, or endorsement arrangement with any of these individuals.</p>
+  </div>
+</section>
+
+<!-- WAITLIST MODAL -->
+<div id="wl-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(20,12,8,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;overflow-y:auto">
+  <div id="wl-modal-inner" style="background:var(--cw);border-radius:24px;max-width:480px;width:100%;padding:36px 36px 32px;position:relative;box-shadow:0 40px 80px rgba(20,12,8,.25);margin:auto;min-height:480px">
+
+    <button onclick="closeAndSubmit()" id="wl-close-btn" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;border:1px solid var(--brd);background:transparent;font-size:18px;cursor:pointer;color:var(--ghost);display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='#F0EAE2'" onmouseout="this.style.background='transparent'">&#215;</button>
+
+    <img src="kindred_logo.png" alt="Kindred" style="height:28px;width:auto;display:block;margin-bottom:20px">
+
+    <!-- SCREEN 0: SIGNUP -->
+    <div id="wl-screen-0">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.15;color:var(--ink);margin-bottom:8px">Be among the <em style="font-style:italic;color:var(--terra)">first families.</em></h3>
+      <p style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:22px">Join the waitlist and we'll let you know the moment you can create your first Kindred book.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+        <input id="wl-name" type="text" placeholder="Your first name" style="width:100%;padding:13px 20px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='rgba(26,23,20,.14)'" />
+        <input id="wl-email" type="email" placeholder="Your email address" style="width:100%;padding:13px 20px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='rgba(26,23,20,.14)'" />
+      </div>
+      <button onclick="submitSignup()" id="wl-btn" style="width:100%;font-size:14px;font-weight:500;padding:15px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;margin-bottom:14px" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Join the waitlist</button>
+      <p id="wl-error" style="display:none;font-size:12px;color:var(--terra);margin-bottom:10px;text-align:center"></p>
+      <div style="display:flex;align-items:flex-start;gap:9px;padding:12px 14px;background:var(--spale);border-radius:10px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2E5E3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <p style="font-size:11px;color:#2E5E3A;line-height:1.6">Your data is securely stored. We will never sell or share your information with anyone outside of Kindred.</p>
+      </div>
+    </div>
+
+    <!-- SURVEY WRAPPER -->
+    <div id="wl-survey" style="display:none">
+      <div style="margin-bottom:22px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span id="wl-step-label" style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)">Step 1 of 15</span>
+          <span id="wl-time-label" style="font-size:11px;color:var(--ghost)">About 4 min remaining</span>
+        </div>
+        <div style="height:3px;background:rgba(26,23,20,.08);border-radius:2px">
+          <div id="wl-progress-bar" style="height:3px;background:var(--terra);border-radius:2px;transition:width .4s ease;width:7%"></div>
+        </div>
+      </div>
+
+      <!-- S1: INTRO -->
+      <div id="wl-screen-1" style="display:none">
+        <p id="wl-greeting" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;line-height:1.3;color:var(--ink);margin-bottom:10px">Thanks. A few quick questions to help us build Kindred for families like yours.</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px">Takes about 4 minutes. No right or wrong answers.</p>
+        <button onclick="goTo(2)" style="width:100%;font-size:14px;font-weight:500;padding:15px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Let's go</button>
+        <div style="text-align:center;margin-top:12px"><button onclick="closeAndSubmit()" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline">Skip survey</button></div>
+      </div>
+
+      <!-- S2: ROLE -->
+      <div id="wl-screen-2" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">About you</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:20px">Which <em style="font-style:italic;color:var(--terra);font-weight:500">best describes</em> you?</p>
+        <div id="wl-role-opts" style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-role-opts',3)" data-val="Mum" style="font-size:14px;padding:14px 22px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Mum</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-role-opts',3)" data-val="Dad" style="font-size:14px;padding:14px 22px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Dad</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-role-opts',3)" data-val="Grandparent" style="font-size:14px;padding:14px 22px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Grandparent</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-role-opts',3)" data-val="Child" style="font-size:14px;padding:14px 22px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Child</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-role-opts',3)" data-val="Other family member" style="font-size:14px;padding:14px 22px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Other family member</button>
+        </div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(1)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(3)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S3: CHILDREN AGES -->
+      <div id="wl-screen-3" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Your family</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:20px">How old are your <em style="font-style:italic;color:var(--terra);font-weight:500">children or grandchildren</em>?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
+          <input id="wl-c1" type="text" placeholder="Child 1 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+          <input id="wl-c2" type="text" placeholder="Child 2 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+          <input id="wl-c3" type="text" placeholder="Child 3 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+          <input id="wl-c4" type="text" placeholder="Child 4 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+          <input id="wl-c5" type="text" placeholder="Child 5 age" style="padding:13px 16px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'" />
+        </div>
+        <div style="display:flex;gap:10px">
+          <button onclick="goTo(2)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(4)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(4)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S4-S9: PROBLEM STATEMENTS -->
+      <div id="wl-screen-4" style="display:none" data-pid="p1">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I care about the <em style="font-style:italic;color:var(--terra);font-weight:500">content my child consumes</em> and want it to be <em style="font-style:italic;color:var(--terra);font-weight:500">good for their developing brain</em>.</p>
+        <div class="wl-scale-block" data-qid="p1" data-next="5" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(3)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(5)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(5)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <div id="wl-screen-5" style="display:none" data-pid="p2">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I often wish I could <em style="font-style:italic;color:var(--terra);font-weight:500">share family memories</em> with my child without <em style="font-style:italic;color:var(--terra);font-weight:500">relying on a screen</em>.</p>
+        <div class="wl-scale-block" data-qid="p2" data-next="6" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(4)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(6)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(6)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <div id="wl-screen-6" style="display:none" data-pid="p3">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I often wish I could tell my child <em style="font-style:italic;color:var(--terra);font-weight:500">stories about our adventures</em> and daily life in a <em style="font-style:italic;color:var(--terra);font-weight:500">way they would love</em>.</p>
+        <div class="wl-scale-block" data-qid="p3" data-next="7" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(5)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(7)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(7)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <div id="wl-screen-7" style="display:none" data-pid="p4">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I've wanted to create a <em style="font-style:italic;color:var(--terra);font-weight:500">photo book or memory book</em> but never have because it felt like <em style="font-style:italic;color:var(--terra);font-weight:500">too much effort</em>.</p>
+        <div class="wl-scale-block" data-qid="p4" data-next="8" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(6)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(8)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(8)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <div id="wl-screen-8" style="display:none" data-pid="p5">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I sometimes wonder whether my child will <em style="font-style:italic;color:var(--terra);font-weight:500">actually remember their childhood</em>, and what I can do to help them <em style="font-style:italic;color:var(--terra);font-weight:500">hold onto those experiences</em> and grow from them.</p>
+        <div class="wl-scale-block" data-qid="p5" data-next="9" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(7)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(9)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(9)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <div id="wl-screen-9" style="display:none" data-pid="p6">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How much do you relate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:28px">I find it hard to give <em style="font-style:italic;color:var(--terra);font-weight:500">truly meaningful gifts</em> to children, most things feel <em style="font-style:italic;color:var(--terra);font-weight:500">generic</em>.</p>
+        <div class="wl-scale-block" data-qid="p6" data-next="10" style="margin-bottom:28px"></div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(8)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button><button onclick="goTo(10)" class="wl-next-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button></div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(10)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S10: PRICING -->
+      <div id="wl-screen-10" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Pricing</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:28px">What would you <em style="font-style:italic;color:var(--terra);font-weight:500">pay</em> for a beautifully illustrated <em style="font-style:italic;color:var(--terra);font-weight:500">hardcover book</em> about your own family, delivered to your door?</p>
+        <div style="text-align:center;margin-bottom:10px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)">A$<span id="wl-price-display">75</span></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:11px;color:var(--ghost)">A$20</span>
+          <span style="font-size:11px;color:var(--ghost)">A$150</span>
+        </div>
+        <input id="wl-price-slider" type="range" min="20" max="150" step="5" value="75"
+          oninput="document.getElementById('wl-price-display').textContent=this.value"
+          style="width:100%;accent-color:var(--terra);margin-bottom:32px;cursor:pointer" />
+        <div style="display:flex;gap:10px">
+          <button onclick="goTo(9)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(11)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+        <div style="text-align:center;margin-top:10px">
+          <button onclick="document.getElementById('wl-price-slider').setAttribute('data-skip','true');document.getElementById('wl-price-display').textContent='0';goTo(11)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">I wouldn't pay for this</button>
+        </div>
+      </div>
+
+      <!-- S11: GIFT -->
+      <div id="wl-screen-11" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">How you'd use it</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:20px">Would you use this more for your <em style="font-style:italic;color:var(--terra);font-weight:500">own family</em> or as a <em style="font-style:italic;color:var(--terra);font-weight:500">gift</em>?</p>
+        <div id="wl-gift-opts" style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-gift-opts','11b')" data-val="My own family" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">My own family</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-gift-opts','11b')" data-val="As a gift" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">As a gift</button>
+          <button class="wl-opt" onclick="selectAndAdvance(this,'wl-gift-opts','11b')" data-val="Both" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Both</button>
+        </div>
+        <div style="display:flex;gap:10px"><button onclick="goTo(10)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button></div>
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo('11b')" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S11B: SUBSCRIPTION -->
+      <div id="wl-screen-11b" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Subscription</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.35;margin-bottom:10px">What would you pay per month for a <em style="font-style:italic;color:var(--terra);font-weight:500">digital subscription</em>?</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:28px">One digital book a month, or 2 printed hardcovers a year, plus your growing digital library.</p>
+        <div style="text-align:center;margin-bottom:10px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--terra)">A$<span id="wl-sub-display">15</span><span style="font-size:20px;color:var(--ghost)">/mo</span></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:11px;color:var(--ghost)">A$5</span>
+          <span style="font-size:11px;color:var(--ghost)">A$40</span>
+        </div>
+        <input id="wl-sub-slider" type="range" min="5" max="40" step="1" value="15"
+          oninput="document.getElementById('wl-sub-display').textContent=this.value"
+          style="width:100%;accent-color:var(--terra);margin-bottom:32px;cursor:pointer" />
+        <div style="display:flex;gap:10px">
+          <button onclick="goTo(11)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(12)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+        <div style="text-align:center;margin-top:10px">
+          <button onclick="document.getElementById('wl-sub-slider').setAttribute('data-skip','true');document.getElementById('wl-sub-display').textContent='0';goTo(12)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">I wouldn't pay for this</button>
+        </div>
+      </div>
+
+      <!-- S12: FEATURES -->
+      <div id="wl-screen-12" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:8px">Features</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:4px">Which of these <em style="font-style:italic;color:var(--terra);font-weight:500">excites you most</em>?</p>
+        <p style="font-size:12px;color:var(--ghost);margin-bottom:14px">Pick up to 3</p>
+        <div id="wl-feat-opts" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Beautiful watercolour illustrations" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🎨  Beautiful watercolour illustrations</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Monthly books with child as hero" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">📚  Monthly books with your child as the hero</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Digital story updates to reading level" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🌱  Digital story updates to your child's reading level</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Audio narration in your own voice" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🎙️  Audio narration in your own voice</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Animated video version" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🎬  Animated video version of the story</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Multiple languages" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🌍  Available in multiple languages</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Special needs and sensory differences" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">💙  Designed for special needs and sensory differences</button>
+          <button class="wl-feat-opt" onclick="toggleFeature(this)" data-val="Every book plants a tree" style="font-size:13px;padding:11px 18px;border-radius:12px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">🌳  Every printed book plants a tree</button>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button onclick="goTo(11)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(13)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(13)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S13: OPEN -->
+      <div id="wl-screen-13" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">The moment</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:6px">What <em style="font-style:italic;color:var(--terra);font-weight:500">moment</em> in your family's life would you most want to <em style="font-style:italic;color:var(--terra);font-weight:500">create a book about</em>?</p>
+        <p style="font-size:12px;color:var(--ghost);margin-bottom:14px">Optional</p>
+        <textarea id="wl-open" placeholder="Tell us about it..." style="width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;min-height:90px;line-height:1.6;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'"></textarea>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button onclick="goTo(12)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(14)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(14)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S14: ANYTHING ELSE -->
+      <div id="wl-screen-14" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">Anything else?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:6px"><em style="font-style:italic;color:var(--terra);font-weight:500">Ideas, thoughts, concerns</em>, or things you'd love to see, we're listening.</p>
+        <p style="font-size:12px;color:var(--ghost);margin-bottom:14px">Optional</p>
+        <textarea id="wl-extra" placeholder="Share anything on your mind..." style="width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--brd);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;min-height:90px;line-height:1.6;transition:border-color .2s" onfocus="this.style.borderColor='var(--terra)'" onblur="this.style.borderColor='var(--brd)'"></textarea>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button onclick="goTo(13)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="goTo(15)" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Next</button>
+        </div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="goTo(15)" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip question</button></div>
+      </div>
+
+      <!-- S15: INTERVIEW -->
+      <div id="wl-screen-15" style="display:none">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:16px">One last thing</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.4;margin-bottom:8px">Would you like to have a quick chat with <em style="font-style:italic;color:var(--terra);font-weight:500">Matt, the founder</em> of Kindred?</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px">Just 15 minutes, no pitch, no agenda. We'd love to hear your story and you'd be helping shape something built for families like yours.</p>
+        <div id="wl-interview-opts" style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <button class="wl-opt" onclick="selectOpt(this,'wl-interview-opts');setTimeout(submitSurvey,350)" data-val="Yes" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Yes, I'd love to</button>
+          <button class="wl-opt" onclick="selectOpt(this,'wl-interview-opts');setTimeout(submitSurvey,350)" data-val="Maybe" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">Maybe, send me more info</button>
+          <button class="wl-opt" onclick="selectOpt(this,'wl-interview-opts');setTimeout(submitSurvey,350)" data-val="No" style="font-size:14px;padding:14px 20px;border-radius:100px;border:1px solid var(--brd);background:var(--cream);color:var(--soft);cursor:pointer;text-align:left;transition:all .2s">No thanks</button>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <button onclick="goTo(14)" style="flex:1;font-size:13px;padding:13px;border-radius:100px;border:1px solid var(--brd);background:transparent;color:var(--soft);cursor:pointer">Back</button>
+          <button onclick="submitSurvey()" id="wl-survey-btn" style="flex:2;font-size:14px;font-weight:500;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Submit survey</button>
+        </div>
+      
+        <div style="text-align:center;margin-top:10px"><button onclick="submitSurvey()" style="font-size:12px;color:var(--ghost);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Skip, submit</button></div>
+      </div>
+
+      <!-- S16: DONE -->
+      <div id="wl-screen-16" style="display:none;text-align:center;padding:16px 0">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--tpale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:14px">Thank you, <em id="wl-thankyou-name" style="font-style:italic;color:var(--terra)"></em></p>
+        <p style="font-size:15px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:10px">Your answers will directly shape what Kindred becomes.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--soft);line-height:1.6;margin-bottom:28px;padding:16px 20px;background:var(--gpale);border-radius:12px">We'll let you know the moment you can create your first book, and you'll be among the very first families to try it.</p>
+        <button onclick="closeWaitlist()" style="font-size:14px;font-weight:500;padding:13px 36px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer" onmouseover="this.style.background='#B05340'" onmouseout="this.style.background='var(--terra)'">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="page-cta" id="waitlist">
+  <p class="eyebrow" style="margin-bottom:18px">Be first to know</p>
+  <h2>Ready to give your child<br>a story that's <em>truly theirs?</em></h2>
+  <p>Join the waitlist and be among the first families to create a Kindred book.</p>
+  <button onclick="openWaitlist()" class="btn-p">Join the waitlist</button>
+  <p class="cta-note">No spam. Just a note when we're ready for you.</p>
+</section>
+
+<script>
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM4MPxkFr2fGwD3nRQUyaW4ASHRztqg58irSw-R2gtHQSXZffNRx3qEf8w1-Wi0PI1/exec';
+var wlEmail = '', wlName = '', TOTAL = 15;
+var timings = {1:'About 4 min',2:'About 3.5 min',3:'About 3 min',4:'About 2.5 min',5:'About 2 min',6:'About 2 min',7:'About 1.5 min',8:'About 1.5 min',9:'About 1 min',10:'About 1 min',11:'About 45 sec',12:'About 30 sec',13:'About 20 sec',14:'About 15 sec',15:'Almost done'};
+
+function closeAndSubmit() {
+  if (wlEmail) {
+    var data = {
+      type:'survey', email:wlEmail, partial:'true',
+      role:getSelected('wl-role-opts'),
+      child1Age:document.getElementById('wl-c1').value.trim(),
+      child2Age:document.getElementById('wl-c2').value.trim(),
+      child3Age:document.getElementById('wl-c3').value.trim(),
+      child4Age:document.getElementById('wl-c4').value.trim(),
+      child5Age:document.getElementById('wl-c5').value.trim(),
+      p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
+      p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'),
+      priceRange:'A$' + (document.getElementById('wl-price-slider') ? document.getElementById('wl-price-slider').value : ''),
+      subPrice:'A$' + (document.getElementById('wl-sub-slider') ? document.getElementById('wl-sub-slider').value : '') + '/mo',
+      giftUsage:getSelected('wl-gift-opts'),
+      features:getFeatures(),
+      openMoment:document.getElementById('wl-open') ? document.getElementById('wl-open').value.trim() : '',
+      anythingElse:document.getElementById('wl-extra') ? document.getElementById('wl-extra').value.trim() : '',
+      interviewWilling:getSelected('wl-interview-opts')
+    };
+    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).catch(function(){});
+  }
+  document.getElementById('wl-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function openWaitlist() {
+  document.getElementById('wl-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  goToScreen(0);
+  document.getElementById('wl-name').value = '';
+  document.getElementById('wl-email').value = '';
+  document.getElementById('wl-error').style.display = 'none';
+  var btn = document.getElementById('wl-btn');
+  btn.textContent = 'Join the waitlist';
+  btn.style.opacity = '1';
+  btn.disabled = false;
+}
+
+function closeWaitlist() {
+  document.getElementById('wl-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('wl-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeWaitlist();
+});
+
+function goToScreen(n) {
+  document.getElementById('wl-screen-0').style.display = n === 0 ? 'block' : 'none';
+  document.getElementById('wl-survey').style.display = (n > 0 || n === '11b') ? 'block' : 'none';
+  for (var i = 1; i <= 16; i++) {
+    var el = document.getElementById('wl-screen-' + i);
+    if (el) el.style.display = (i === n) ? 'block' : 'none';
+  }
+  var el11b = document.getElementById('wl-screen-11b');
+  if (el11b) el11b.style.display = (n === '11b') ? 'block' : 'none';
+  var numN = n === '11b' ? 11.5 : parseFloat(n);
+  if (!isNaN(numN) && numN >= 1 && numN <= 15) {
+    document.getElementById('wl-step-label').textContent = 'Step ' + Math.round(numN) + ' of ' + TOTAL;
+    document.getElementById('wl-time-label').textContent = (timings[Math.round(numN)] || '') + ' remaining';
+    document.getElementById('wl-progress-bar').style.width = Math.round((numN / TOTAL) * 100) + '%';
+  }
+  document.getElementById('wl-close-btn').style.display = n === 16 ? 'none' : 'flex';
+  if (n === 16) {
+    var nameEl = document.getElementById('wl-thankyou-name');
+    if (nameEl && wlName) nameEl.textContent = wlName;
+  }
+  var inner = document.getElementById('wl-modal-inner');
+  if (inner) inner.scrollTop = 0;
+}
+
+function goTo(n) { goToScreen(n); }
+
+function selectOpt(btn, groupId) {
+  document.getElementById(groupId).querySelectorAll('.wl-opt').forEach(function(b) {
+    b.style.background = 'var(--cream)'; b.style.borderColor = 'var(--brd)';
+    b.style.color = 'var(--soft)'; b.style.fontWeight = '400';
+  });
+  btn.style.background = 'var(--tpale)'; btn.style.borderColor = 'var(--terra)';
+  btn.style.color = '#7A3020'; btn.style.fontWeight = '500';
+}
+
+function selectAndAdvance(btn, groupId, nextStep) {
+  selectOpt(btn, groupId);
+  setTimeout(function() { goTo(nextStep); }, 320);
+}
+
+function getSelected(groupId) {
+  var btns = document.getElementById(groupId).querySelectorAll('.wl-opt');
+  for (var i = 0; i < btns.length; i++) {
+    if (btns[i].style.fontWeight === '500') return btns[i].getAttribute('data-val');
+  }
+  return '';
+}
+
+function toggleFeature(btn) {
+  var sel = document.getElementById('wl-feat-opts').querySelectorAll('.wl-feat-opt[data-selected="true"]');
+  if (btn.getAttribute('data-selected') === 'true') {
+    btn.removeAttribute('data-selected');
+    btn.style.background = 'var(--cream)'; btn.style.borderColor = 'var(--brd)';
+    btn.style.color = 'var(--soft)'; btn.style.fontWeight = '400';
+  } else {
+    if (sel.length >= 3) return;
+    btn.setAttribute('data-selected', 'true');
+    btn.style.background = 'var(--tpale)'; btn.style.borderColor = 'var(--terra)';
+    btn.style.color = '#7A3020'; btn.style.fontWeight = '500';
+  }
+}
+
+function getFeatures() {
+  var vals = [];
+  document.getElementById('wl-feat-opts').querySelectorAll('.wl-feat-opt[data-selected="true"]').forEach(function(b) { vals.push(b.getAttribute('data-val')); });
+  return vals.join('; ');
+}
+
+function buildScales() {
+  var opts = [
+    {emoji:'😣', label:'Strongly disagree', val:'Strongly disagree'},
+    {emoji:'😕', label:'Disagree', val:'Disagree'},
+    {emoji:'😶', label:'Neutral', val:'Neutral'},
+    {emoji:'🙂', label:'Agree', val:'Agree'},
+    {emoji:'🤩', label:'Strongly agree', val:'Strongly agree'}
+  ];
+  document.querySelectorAll('.wl-scale-block').forEach(function(block) {
+    var qid = block.getAttribute('data-qid');
+    block.innerHTML = '';
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:6px;justify-content:space-between';
+    opts.forEach(function(opt) {
+      var btn = document.createElement('button');
+      btn.innerHTML = '<span style="display:block;font-size:26px;margin-bottom:6px;line-height:1">' + opt.emoji + '</span><span style="display:block;font-size:10px;line-height:1.3;color:var(--soft)">' + opt.label + '</span>';
+      btn.setAttribute('data-val', opt.val);
+      btn.setAttribute('data-qid', qid);
+      btn.style.cssText = 'flex:1;padding:12px 4px;border-radius:14px;border:1px solid var(--brd);background:var(--cream);cursor:pointer;text-align:center;transition:all .2s;min-width:0';
+      btn.onclick = function() {
+        document.querySelectorAll('[data-qid="' + qid + '"]').forEach(function(b) {
+          b.style.background = 'var(--cream)'; b.style.borderColor = 'var(--brd)';
+          b.removeAttribute('data-selected');
+        });
+        this.style.background = 'var(--tpale)'; this.style.borderColor = 'var(--terra)';
+        this.setAttribute('data-selected','true');
+        var nextStep = block.getAttribute('data-next');
+        if (nextStep) { setTimeout(function() { goTo(parseInt(nextStep)); }, 350); }
+      };
+      row.appendChild(btn);
+    });
+    block.appendChild(row);
+  });
+}
+
+function getScore(qid) {
+  var btns = document.querySelectorAll('[data-qid="' + qid + '"]');
+  for (var i = 0; i < btns.length; i++) {
+    if (btns[i].getAttribute('data-selected') === 'true') return btns[i].getAttribute('data-val');
+  }
+  return '';
+}
+
+buildScales();
+
+function submitSignup() {
+  var name = document.getElementById('wl-name').value.trim();
+  var email = document.getElementById('wl-email').value.trim();
+  var btn = document.getElementById('wl-btn');
+  var error = document.getElementById('wl-error');
+  error.style.display = 'none';
+  if (!name) { error.textContent = 'Please enter your first name.'; error.style.display = 'block'; return; }
+  if (!email || !email.includes('@')) { error.textContent = 'Please enter a valid email address.'; error.style.display = 'block'; return; }
+  wlName = name; wlEmail = email;
+  btn.textContent = 'Joining...'; btn.style.opacity = '0.7'; btn.disabled = true;
+  document.getElementById('wl-greeting').textContent = 'Thanks ' + name + '. A few quick questions to help us build Kindred for families like yours.';
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({type:'signup',name:name,email:email}) })
+    .then(function() { goToScreen(1); }).catch(function() { goToScreen(1); });
+}
+
+function submitSurvey() {
+  var btn = document.getElementById('wl-survey-btn');
+  btn.textContent = 'Submitting...'; btn.disabled = true;
+  var data = {
+    type:'survey', email:wlEmail,
+    role:getSelected('wl-role-opts'),
+    child1Age:document.getElementById('wl-c1').value.trim(),
+    child2Age:document.getElementById('wl-c2').value.trim(),
+    child3Age:document.getElementById('wl-c3').value.trim(),
+    child4Age:document.getElementById('wl-c4').value.trim(),
+    child5Age:document.getElementById('wl-c5').value.trim(),
+    p1:getScore('p1'), p2:getScore('p2'), p3:getScore('p3'),
+    p4:getScore('p4'), p5:getScore('p5'), p6:getScore('p6'),
+    priceRange: document.getElementById('wl-price-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-price-slider').value,
+    subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
+    subPrice: document.getElementById('wl-sub-slider').getAttribute('data-skip') ? 'Wouldn\'t pay' : 'A$' + document.getElementById('wl-sub-slider').value + '/mo',
+    giftUsage:getSelected('wl-gift-opts'),
+    features:getFeatures(),
+    openMoment:document.getElementById('wl-open').value.trim(),
+    anythingElse:document.getElementById('wl-extra').value.trim(),
+    interviewWilling:getSelected('wl-interview-opts')
+  };
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
+    .then(function() { goToScreen(16); }).catch(function() { goToScreen(16); });
+}
+</script>
+
+<!-- SHARE FOOTER -->
+<!-- SHARE FOOTER -->
+<!-- SHARE FOOTER -->
+<section style="background:var(--cw);border-top:1px solid var(--brd);padding:48px 56px;text-align:center">
+  <p style="font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:12px">Know a family who'd love this?</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:24px">Send it to them.</p>
+  <button onclick="shareKindred()" style="font-size:14px;font-weight:500;padding:14px 36px;border-radius:100px;border:1.5px solid rgba(26,23,20,.14);background:transparent;color:var(--ink);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:10px" onmouseover="this.style.borderColor='rgba(26,23,20,.35)'" onmouseout="this.style.borderColor='rgba(26,23,20,.14)'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    Share with a friend
+  </button>
+  <p id="share-fallback" style="display:none;font-size:13px;color:var(--muted);margin-top:16px;line-height:1.6">Copy this link and send it to them:<br><span style="font-family:monospace;font-size:12px;color:var(--terra)">mykindredbook.com/waitlist</span></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/"><img src="kindred_logo.png" alt="Kindred" style="height:28px;width:auto;display:block;opacity:0.6"></a>
+  <p class="fc">© 2026 Kindred Books. All rights reserved.</p>
+</footer>
+
+<script>
+function shareKindred() {
+  const shareData = {
+    title: 'Kindred Books',
+    text: "Hey, I came across this startup creating books for children based on real developmental psychology. Thought you might be interested. Here's their waitlist:",
+    url: 'https://mykindredbook.com/waitlist'
+  };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else {
+    document.getElementById('share-fallback').style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
