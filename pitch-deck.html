@@ -73,7 +73,7 @@ body{font-family:"DM Sans",sans-serif;background:#EDE4D8;color:#1A1714;display:f
 /* ════════════════════════
    SLIDE FOUNDATIONS
 ════════════════════════ */
-/* Two-panel split — image left or right */
+/* Two-panel split , image left or right */
 .split{display:grid;min-height:100%}
 .split-6040{grid-template-columns:60fr 40fr}
 .split-5050{grid-template-columns:1fr 1fr}
@@ -175,7 +175,7 @@ body{font-family:"DM Sans",sans-serif;background:#EDE4D8;color:#1A1714;display:f
 .moat-icon{font-size:24px;margin-bottom:12px}
 .moat-items{display:flex;flex-direction:column;gap:9px;margin-top:14px}
 .moat-item{font-size:13px;line-height:1.5;padding-left:14px;position:relative}
-.moat-item::before{content:"—";position:absolute;left:0;opacity:.4;font-size:11px;top:1px}
+.moat-item::before{content:",";position:absolute;left:0;opacity:.4;font-size:11px;top:1px}
 .moat-item.wh{color:#B8AFA9}
 .moat-item.sg{color:#4E7A5A}
 
@@ -371,7 +371,7 @@ body{font-family:"DM Sans",sans-serif;background:#EDE4D8;color:#1A1714;display:f
       </div>
       <div style="border:1px solid var(--br);border-radius:12px;padding:14px 14px;background:var(--cw);display:flex;flex-direction:column;gap:6px">
         <div style="font-size:10px;font-weight:600;color:var(--t);letter-spacing:.06em;text-transform:uppercase">Komisar</div>
-        <p style="font-size:12px;color:var(--mu);line-height:1.55">Physical, emotionally resonant objects reinforce secure parent-child attachment in the critical early years.</p>
+        <p style="font-size:12px;color:var(--mu);line-height:1.55">Sustained parental presence in the first three years builds secure attachment , the foundation for long-term mental health, resilience, and emotional regulation.</p>
       </div>
       <div style="border:1px solid var(--br);border-radius:12px;padding:14px 14px;background:var(--cw);display:flex;flex-direction:column;gap:6px">
         <div style="font-size:10px;font-weight:600;color:var(--t);letter-spacing:.06em;text-transform:uppercase">Siegel · UCLA</div>
@@ -770,7 +770,7 @@ function updateUI(){
   const nb=document.getElementById("nb");
   if(cur===TOT){
     nb.innerHTML='Get in touch <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-    nb.onclick=()=>window.open("mailto:matt@growthforpurpose.com?subject=Kindred%20Investment%20Opportunity&body=Hey%20Matt%2C%0A%0AI%20was%20impressed%20by%20your%20pitch.%20I%27d%20be%20keen%20to%20chat%20about%20the%20investment%20and%20growth%20opportunity%20of%20Kindred%20Books.%0A%0AWhen%20could%20we%20meet%3F — Investor Deck","_blank");
+    nb.onclick=()=>window.open("mailto:matt@growthforpurpose.com?subject=Kindred%20Investment%20Opportunity&body=Hey%20Matt%2C%0A%0AI%20was%20impressed%20by%20your%20pitch.%20I%27d%20be%20keen%20to%20chat%20about%20the%20investment%20and%20growth%20opportunity%20of%20Kindred%20Books.%0A%0AWhen%20could%20we%20meet%3F , Investor Deck","_blank");
   } else {
     nb.innerHTML='Next <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M6 4l4 4-4 4"/></svg>';
     nb.onclick=()=>nav(1);
