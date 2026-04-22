@@ -280,11 +280,15 @@ body{font-family:"DM Sans",sans-serif;background:#EDE4D8;color:#1A1714;display:f
   .slide[data-n="6"] [style*="font-size:44px"]{font-size:26px !important}
   .slide[data-n="6"] [style*="padding:22px 40px"]{padding:14px 16px !important}
 
-  /* S7: hide image on mobile, scrollable content */
-  .slide[data-n="7"] .img-panel{display:none}
-  .slide[data-n="7"] .txt-panel{padding:14px 16px !important;overflow-y:auto;max-height:100%}
-  .slide[data-n="7"] .h2{font-size:clamp(16px,4.5vw,22px) !important;margin-bottom:6px !important}
-  .slide[data-n="7"] .rule{margin:4px 0 6px !important}
+  /* S7: image top, content below, like S2 */
+  .slide[data-n="7"] .split-4060{grid-template-columns:1fr !important;grid-template-rows:38% 1fr}
+  .slide[data-n="7"] .img-panel{display:block;order:-1 !important;max-height:none}
+  .slide[data-n="7"] .txt-panel{padding:12px 16px !important;overflow-y:auto}
+  .slide[data-n="7"] .h2{font-size:clamp(16px,4.5vw,20px) !important;margin-bottom:4px !important}
+  .slide[data-n="7"] .rule{margin:3px 0 5px !important}
+  .slide[data-n="7"] [style*="margin-bottom:10px"]{margin-bottom:6px !important}
+  .slide[data-n="7"] [style*="margin-bottom:8px"]{margin-bottom:5px !important}
+  .slide[data-n="7"] .rev-grid{gap:5px !important}
 
   /* S8: 1-col moat cards */
   .slide[data-n="8"] [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important;gap:6px}
