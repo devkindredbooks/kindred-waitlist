@@ -19,55 +19,113 @@ body{font-family:'DM Sans',sans-serif;background:#FAF7F2;color:#1A1714;overflow-
   --brd:rgba(26,23,20,0.07);
 }
 
-/* PASSWORD SCREEN */
-#pw-screen{position:fixed;inset:0;z-index:9999;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-direction:column}
+/* PASSWORD */
+#pw-screen{position:fixed;inset:0;z-index:9999;background:var(--cream);display:flex;align-items:center;justify-content:center}
 #pw-screen.hidden{display:none}
-.pw-box{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:360px;padding:0 24px}
-.pw-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
-.pw-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ink);text-align:center;line-height:1.2}
+.pw-box{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:340px;padding:0 24px}
+.pw-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--ink);text-align:center;line-height:1.2}
 .pw-title em{font-style:italic;color:var(--terra)}
 .pw-hint{font-size:13px;color:var(--ghost);text-align:center;line-height:1.6}
-.pw-field{width:100%;padding:14px 22px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cw);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;text-align:center;letter-spacing:.06em}
+.pw-field{width:100%;padding:13px 22px;border-radius:100px;border:1px solid rgba(26,23,20,.14);background:var(--cw);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;text-align:center;letter-spacing:.06em}
 .pw-field:focus{border-color:var(--terra)}
 .pw-field::placeholder{color:var(--ghost);letter-spacing:0}
-.pw-btn{width:100%;padding:14px 32px;border-radius:100px;border:none;background:var(--terra);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .25s}
-.pw-btn:hover{background:#B05340;transform:translateY(-1px);box-shadow:0 10px 28px rgba(196,97,74,.25)}
-.pw-err{font-size:13px;color:var(--terra);text-align:center;min-height:18px}
+.pw-btn{width:100%;padding:13px;border-radius:100px;border:none;background:var(--terra);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+.pw-btn:hover{background:#B05340}
+.pw-err{font-size:12px;color:var(--terra);text-align:center;min-height:16px}
 
-/* PAGE */
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(250,247,242,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--brd)}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(26,23,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-back{font-size:13px;color:rgba(250,247,242,.5);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:rgba(250,247,242,.9)}
 
-.hero{max-width:800px;margin:0 auto;padding:80px 56px 64px;text-align:center}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,68px);font-weight:300;line-height:1.08;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px}
-.hero h1 em{font-style:italic;color:var(--terra)}
-.hero p{font-size:16px;font-weight:300;line-height:1.85;color:var(--muted);max-width:580px;margin:0 auto 32px}
+/* HERO — dark with orbs */
+.hero{position:relative;overflow:hidden;background:var(--ink);padding:96px 56px 88px;text-align:center}
+.hero::before{content:'';position:absolute;width:600px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,97,74,.16),transparent 68%);top:-120px;right:-80px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:500px;height:450px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,97,74,.10),transparent 68%);bottom:-100px;left:-60px;pointer-events:none}
+.hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,247,242,.3);margin-bottom:20px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,64px);font-weight:300;line-height:1.08;letter-spacing:-.025em;color:var(--cream);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:#E8A870}
+.hero-sub{font-size:16px;font-weight:300;line-height:1.8;color:rgba(250,247,242,.55);max-width:560px;margin:0 auto 36px}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font-size:14px;font-weight:500;padding:14px 32px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;line-height:1}
+.btn:hover{background:#B05340;transform:translateY(-1px);box-shadow:0 10px 28px rgba(196,97,74,.35)}
+.btn-ghost-light{font-size:14px;font-weight:400;padding:14px 32px;border-radius:100px;border:1.5px solid rgba(250,247,242,.2);background:transparent;color:rgba(250,247,242,.8);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;line-height:1}
+.btn-ghost-light:hover{border-color:rgba(250,247,242,.45);color:white}
 
-.content{max-width:800px;margin:0 auto;padding:0 56px 80px}
+/* CONTENT */
+.content{max-width:760px;margin:0 auto;padding:72px 56px 80px}
 .section{margin-bottom:52px}
-.section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,36px);font-weight:300;color:var(--ink);margin-bottom:14px;line-height:1.2}
+.section-lbl{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);margin-bottom:10px}
+.section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,38px);font-weight:300;color:var(--ink);margin-bottom:14px;line-height:1.15;letter-spacing:-.015em}
 .section h2 em{font-style:italic;color:var(--terra)}
-.section p{font-size:15px;font-weight:300;line-height:1.85;color:var(--muted);margin-bottom:12px}
+.section p{font-size:15px;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:12px}
+.section p:last-child{margin-bottom:0}
 .section p strong{font-weight:500;color:var(--soft)}
 
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
-.stat{background:var(--cw);border:1px solid var(--brd);border-radius:16px;padding:24px;text-align:center}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--terra);line-height:1;margin-bottom:8px}
-.stat-l{font-size:12px;color:var(--ghost);line-height:1.5}
+/* MARKET GRID */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.mstat{background:var(--cw);border:1px solid var(--brd);border-radius:14px;padding:22px 18px;text-align:center}
+.mstat-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:8px}
+.mstat.terra .mstat-n{color:var(--terra)}
+.mstat.sage .mstat-n{color:var(--sage)}
+.mstat.gold .mstat-n{color:var(--gold)}
+.mstat-l{font-size:12px;color:var(--ghost);line-height:1.5}
 
-.callout{background:var(--gpale);border-radius:16px;padding:24px 28px;margin:24px 0}
-.callout p{font-size:15px;font-weight:300;line-height:1.8;color:var(--soft);margin:0}
-.callout p strong{font-weight:500;color:var(--ink)}
+/* VAL STATS */
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.vstat{background:var(--cw);border:1px solid var(--brd);border-radius:14px;padding:22px 18px;text-align:center}
+.vstat-n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--terra);line-height:1;margin-bottom:8px}
+.vstat-l{font-size:12px;color:var(--ghost);line-height:1.5}
 
-.divider{border:none;border-top:1px solid var(--brd);margin:40px 0}
+/* P SCORES */
+.p-list{display:flex;flex-direction:column;gap:6px;margin:20px 0}
+.p-item{display:flex;align-items:center;gap:14px;background:var(--cw);border:1px solid var(--brd);border-radius:11px;padding:12px 16px}
+.p-score{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;min-width:44px;line-height:1}
+.p-score.pass{color:var(--terra)}
+.p-score.miss{color:var(--ghost)}
+.p-label{font-size:13px;font-weight:300;color:var(--muted);line-height:1.45}
+.p-label strong{font-weight:500;color:var(--soft);display:block;margin-bottom:1px;font-size:12px}
 
-.cta-section{text-align:center;padding:56px;background:linear-gradient(160deg,#EDD4C8 0%,#FAF7F2 45%,#EDD4C8 100%);border-top:1px solid rgba(196,97,74,.18)}
-.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,48px);font-weight:300;color:var(--ink);margin-bottom:14px}
+/* MOAT */
+.moat-list{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.moat-item{display:flex;gap:16px;align-items:flex-start;background:var(--cw);border:1px solid var(--brd);border-radius:12px;padding:18px 20px}
+.moat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--tpale);line-height:1;flex-shrink:0;width:28px}
+.moat-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.moat-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.65}
+
+/* CALLOUT */
+.callout{border-radius:14px;padding:20px 24px;margin:20px 0}
+.callout.gold{background:var(--gpale)}
+.callout.terra{background:var(--tpale)}
+.callout.sage{background:var(--spale)}
+.callout p{font-size:14px;font-weight:300;line-height:1.8;margin:0}
+.callout.gold p{color:#5A3A10}
+.callout.terra p{color:#5A2A18}
+.callout.sage p{color:#1A4A28}
+.callout p strong{font-weight:500}
+
+/* PHASES */
+.phases{border:1px solid var(--brd);border-radius:14px;overflow:hidden;background:var(--cw);margin:20px 0}
+.phase{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border-bottom:1px solid var(--brd)}
+.phase:last-child{border-bottom:none}
+.phase-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.phase-tag.v1{background:var(--tpale);color:#7A3020}
+.phase-tag.v2{background:var(--spale);color:#2E5E3A}
+.phase-tag.v3{background:var(--gpale);color:#7A5818}
+.phase-body{font-size:13px;font-weight:300;color:var(--muted);line-height:1.65}
+.phase-body strong{font-weight:500;color:var(--soft)}
+
+.divider{border:none;border-top:1px solid var(--brd);margin:44px 0}
+
+/* CTA */
+.cta-section{text-align:center;padding:72px 56px;background:linear-gradient(160deg,#EDD4C8 0%,#FAF7F2 45%,#EDD4C8 100%);border-top:1px solid rgba(196,97,74,.18)}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--ink);margin-bottom:12px;letter-spacing:-.02em}
 .cta-section h2 em{font-style:italic;color:var(--terra)}
-.cta-section p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:28px}
-.btn{font-size:14px;font-weight:500;padding:14px 36px;border-radius:100px;border:2px solid transparent;background:var(--terra);color:white;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;line-height:1}
-.btn:hover{background:#B05340;transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,97,74,.3)}
-.btn-ghost{font-size:14px;font-weight:400;padding:14px 36px;border-radius:100px;border:2px solid rgba(26,23,20,.14);background:transparent;color:var(--ink);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;line-height:1;margin-left:0}
+.cta-section p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto}
+.btn-dark{font-size:14px;font-weight:500;padding:14px 32px;border-radius:100px;border:none;background:var(--terra);color:white;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;line-height:1}
+.btn-dark:hover{background:#B05340;transform:translateY(-1px);box-shadow:0 10px 28px rgba(196,97,74,.3)}
+.btn-ghost{font-size:14px;font-weight:400;padding:14px 32px;border-radius:100px;border:1.5px solid rgba(26,23,20,.14);background:transparent;color:var(--ink);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;line-height:1}
 .btn-ghost:hover{border-color:rgba(26,23,20,.35)}
 
 footer{border-top:1px solid var(--brd);padding:28px 56px;display:flex;align-items:center;justify-content:space-between}
@@ -75,22 +133,25 @@ footer{border-top:1px solid var(--brd);padding:28px 56px;display:flex;align-item
 
 @media(max-width:768px){
   nav{padding:0 20px}
-  .hero,.content{padding-left:24px;padding-right:24px}
-  .stats{grid-template-columns:1fr}
-  .cta-section{padding:48px 24px}
-  .btn-ghost{margin-left:0;margin-top:10px}
+  .hero{padding:72px 24px 64px}
+  .content{padding:56px 24px}
+  .market-grid,.val-grid{grid-template-columns:1fr}
+  .cta-section{padding:56px 24px}
   footer{padding:24px 20px;flex-direction:column;gap:12px;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 <div id="pw-screen">
   <div class="pw-box">
-    <p class="pw-logo">Kindred Books</p>
+    <div style="display:flex;flex-direction:column;align-items:center;line-height:1.1;margin-bottom:4px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span>
+    </div>
     <h2 class="pw-title">Investor <em>Overview</em></h2>
-    <p class="pw-hint">This page is private. Enter the access code to continue.</p>
+    <p class="pw-hint">Private page. Enter the access code to continue.</p>
     <input class="pw-field" id="pw-input" type="password" placeholder="Access code" onkeydown="if(event.key==='Enter')attempt()">
     <button class="pw-btn" onclick="attempt()">Continue</button>
     <p class="pw-err" id="pw-err"></p>
@@ -100,20 +161,22 @@ footer{border-top:1px solid var(--brd);padding:28px 56px;display:flex;align-item
 <!-- NAV -->
 <nav>
   <a href="/" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1.1">
-    <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:.01em"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span>
-    <span style="font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:.01em"><span style="color:var(--terra)">kind</span><span style="color:rgba(250,247,242,.85)">red</span></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:.18em;color:rgba(250,247,242,.5)">books</span>
   </a>
-  <a href="/" style="font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:all .2s" onmouseover="this.style.color='var(--terra)'" onmouseout="this.style.color='var(--muted)'">Back to site</a>
+  <a href="/" class="nav-back">← Back to site</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="eyebrow">Early stage opportunity</p>
-  <h1>Building the next generation of <em>children's books</em></h1>
-  <p>Kindred turns real family photos and memories into beautifully watercolour-illustrated children's books, written using developmental psychology. We're at pre-launch stage, raising a small seed round from the right people.</p>
-  <div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:8px">
-    <a href="/kindred-pitch-deck-family-friends" class="btn">View pitch deck</a>
-    <a href="mailto:matt@growthforpurpose.com" class="btn-ghost">Get in touch</a>
+  <div class="hero-inner">
+    <p class="eyebrow">Early stage · Confidential · April 2026</p>
+    <h1>The <em>untapped intersection</em> nobody has built yet</h1>
+    <p class="hero-sub">Two enormous markets. Zero products at the crossroads. We're pre-launch, raising a small seed round from the right people.</p>
+    <div class="btn-row">
+      <a href="/kindred-pitch-deck-family-friends" class="btn">View pitch deck</a>
+      <a href="mailto:matt@growthforpurpose.com" class="btn-ghost-light">Get in touch</a>
+    </div>
   </div>
 </section>
 
@@ -121,118 +184,220 @@ footer{border-top:1px solid var(--brd);padding:28px 56px;display:flex;align-item
 <div class="content">
 
   <div class="section">
-    <h2>The <em>problem</em></h2>
-    <p>Every night, millions of parents read their children books about characters and worlds that have nothing to do with their family, their memories, or who their child is becoming. The books are generic. The science says that's a missed opportunity.</p>
-    <p><strong>Children remember stories about themselves 3-4 times better than other stories.</strong> The way parents narrate children's experiences directly shapes their autobiographical memory, identity development, and emotional resilience. This is well-established research — Prof. Robyn Fivush at Emory University has spent decades documenting it. Nobody has built the product that acts on it.</p>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <h2>The <em>solution</em></h2>
-    <p>Upload your family photos. In five minutes, Kindred generates a beautifully written, watercolour-illustrated children's book featuring your actual family — calibrated to your child's developmental stage, grounded in child psychology, and delivered to your door as a hardcover.</p>
-    <p>We're not building a photo book. We're building a <strong>child development companion</strong> — a platform that gets to know your family over time, creating a growing library of books that update as your child grows.</p>
-    <div class="callout">
-      <p><strong>The one-sentence version:</strong> Audible for your family's story — but the stories are real, the illustrations are painted, and the writing is shaped by decades of developmental psychology research.</p>
+    <p class="section-lbl">The problem</p>
+    <h2>Generic books. A <em>missed opportunity.</em></h2>
+    <p>Reading to his two-year-old son every night, Kindred's founder kept running into the same frustration: the most popular children's books are written purely for entertainment, with almost no developmental intentionality. And there was no good way to share real family memories — the trips, the firsts, the ordinary extraordinary moments — in a form a young child could actually engage with.</p>
+    <div class="callout terra">
+      <p><strong>The insight:</strong> The stories children hear about their own life are one of the most powerful forces shaping who they become. Decades of child psychology confirm it. Nobody has built the product that acts on it.</p>
     </div>
   </div>
 
   <hr class="divider">
 
   <div class="section">
-    <h2>Early <em>validation</em></h2>
-    <p>We've completed 10 structured in-depth interviews with parents, grandparents, and family members — and our live waitlist survey, launched this week, has already generated 7 completed responses from organic signups. 17 data points in total, with more arriving daily.</p>
+    <p class="section-lbl">Market opportunity</p>
+    <h2>Two enormous markets. <em>Zero products</em> at the intersection.</h2>
+    <div class="market-grid">
+      <div class="mstat terra">
+        <div class="mstat-n">~$140B</div>
+        <div class="mstat-l">Children's entertainment — all generic by design</div>
+      </div>
+      <div class="mstat sage">
+        <div class="mstat-n">~$30B</div>
+        <div class="mstat-l">Personalised gifts — sentimental, one-time, not developmental</div>
+      </div>
+      <div class="mstat gold">
+        <div class="mstat-n">0</div>
+        <div class="mstat-l">Products at the intersection: personal, developmental, built for lifetime value</div>
+      </div>
+    </div>
+    <p><strong>Why now:</strong> AI has made personalised illustration economically viable for the first time. Parents are anxious about passive screen time. The 'AI slop' backlash creates a counter-narrative opportunity. And developmental psychology — Fivush, Komisar, Siegel — is entering mainstream parenting culture.</p>
+  </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-n">4.4</div>
-        <div class="stat-l">Average solution score out of 5 across 10 in-depth interviews</div>
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-lbl">The moat</p>
+    <h2>Psychology is the moat. <em>Not personalisation.</em></h2>
+    <p>This is not a personalised gift company that discovered AI. The core of the product is developmental psychology research that has never been applied at scale in consumer products for children. <strong>Children remember stories about themselves 3–4× more than other stories.</strong> Prof. Robyn Fivush at Emory has spent decades documenting it. Dr. Erica Komisar's attachment research adds that physical, emotionally resonant objects reinforce parent-child bonds in the critical early years.</p>
+    <div class="moat-list">
+      <div class="moat-item">
+        <div class="moat-num">01</div>
+        <div><div class="moat-title">Psychology embedded in the architecture</div><div class="moat-desc">Developmental psychology at every layer — narrative structure, language register, illustration brief, discussion prompts. Not a badge. Infrastructure.</div></div>
       </div>
-      <div class="stat">
-        <div class="stat-n">4.35</div>
-        <div class="stat-l">Average problem score across all 6 problem statements from live survey respondents</div>
+      <div class="moat-item">
+        <div class="moat-num">02</div>
+        <div><div class="moat-title">Named expert advisory</div><div class="moat-desc">Prof. Robyn Fivush (Emory) and Dr. Erica Komisar — relationship active, formalisation in progress. Uncopyable.</div></div>
       </div>
-      <div class="stat">
-        <div class="stat-n">A$66</div>
-        <div class="stat-l">Average hardcover WTP from survey respondents, unprompted</div>
+      <div class="moat-item">
+        <div class="moat-num">03</div>
+        <div><div class="moat-title">Compounding irreplaceability</div><div class="moat-desc">A library of a child's life that updates as they grow is not something anyone cancels. Every birthday is a reactivation trigger. Every sibling is a new account.</div></div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">04</div>
+        <div><div class="moat-title">Proprietary pipeline</div><div class="moat-desc">10-agent AI system, LoRA-trained character consistency, two human review gates. Under 5 minutes from photo to illustrated book. Not a ChatGPT wrapper.</div></div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">05</div>
+        <div><div class="moat-title">Longitudinal outcome data</div><div class="moat-desc">The long-term ambition: the largest dataset on narrative reminiscing in families ever collected. Co-authored publications, a Kindred Validated standard, clinical referral pathway.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-lbl">The product</p>
+    <h2>A child development companion. <em>Not a photo book.</em></h2>
+    <p>Upload family photos. Kindred generates a watercolour-illustrated, psychology-led storybook featuring your real family — calibrated to your child's developmental stage, delivered as a premium hardcover, and living digitally in a growing family library.</p>
+    <div class="callout gold">
+      <p><strong>The Living Book:</strong> Books update at developmental milestones as the child grows. A book made at age 2 has different language, register, and narrative complexity at age 5. The story adapts to who they're becoming. Three value horizons per family: a <strong>Moment</strong>, a <strong>Season</strong>, a <strong>Journey</strong>.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-lbl">Early validation</p>
+    <h2>31 data points. <em>All organic.</em></h2>
+    <p>10 structured in-depth interviews plus 21 live waitlist survey responses — all organic signups, no paid traffic.</p>
+    <div class="val-grid">
+      <div class="vstat">
+        <div class="vstat-n">4.4/5</div>
+        <div class="vstat-l">Solution score across 10 in-depth interviews — scored higher <em>after</em> seeing the product</div>
+      </div>
+      <div class="vstat">
+        <div class="vstat-n">4.69/5</div>
+        <div class="vstat-l">Solution validation from live survey — "real memories, beautifully written, watercolour illustrated"</div>
+      </div>
+      <div class="vstat">
+        <div class="vstat-n">A$56</div>
+        <div class="vstat-l">Average hardcover WTP from live survey, unprompted (median A$60)</div>
       </div>
     </div>
 
-    <p>5 of 6 problem statements scored above 4.0 in our live survey — the threshold for investor-ready validation. In the in-depth interviews, the strongest signal remained consistent: parents scored the solution <em>higher after seeing the product</em> than before. The product sells itself.</p>
-    <p><strong>100% of live survey respondents are open to a follow-up conversation.</strong> 86% said yes outright. Privacy and AI trust was flagged by 7 of 10 interview participants — which we treat as a moat signal, not a barrier. We're building explicit privacy architecture into the product from day one: photos deleted after book creation, no AI training, full data deletion capability.</p>
-    <p><strong>Top features from live survey:</strong> Watercolour illustration quality (5/7), monthly books with child as hero (3/7), special needs consideration and multilingual support tied (2/7 each) — directly consistent with the interview findings.</p>
+    <p style="font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost);margin:28px 0 12px">Problem statement scores — live survey (1–5)</p>
+    <div class="p-list">
+      <div class="p-item">
+        <div class="p-score pass">4.86</div>
+        <div class="p-label"><strong>P1 — Developmental content</strong>I care whether the content my child consumes is good for their developing brain</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score pass">4.69</div>
+        <div class="p-label"><strong>P7 — Solution validation</strong>Imagine: real memories, beautifully written, watercolour illustrated</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score pass">4.67</div>
+        <div class="p-label"><strong>P2 — Screen-free memories</strong>I wish I could share family memories without a screen</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score pass">4.43</div>
+        <div class="p-label"><strong>P3 — Storytelling</strong>I wish I could tell stories about our adventures in a way my child would love</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score pass">4.37</div>
+        <div class="p-label"><strong>P4 — Memory book friction</strong>I think about creating photo books but never do — too much effort and time</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score pass">4.25</div>
+        <div class="p-label"><strong>P5 — Childhood memory</strong>I wonder whether my child will actually remember their childhood</div>
+      </div>
+      <div class="p-item">
+        <div class="p-score miss">3.79</div>
+        <div class="p-label"><strong>P6 — Meaningful gifts</strong>It's hard to give truly meaningful gifts — most things feel generic</div>
+      </div>
+    </div>
+    <p>6 of 7 above the 4.0 investor-ready threshold. P6 is the exception — though gifting was mentioned unprompted as a use case by 10 of 21 survey respondents. <strong>71% open to a follow-up conversation.</strong></p>
   </div>
 
   <hr class="divider">
 
   <div class="section">
-    <h2>The <em>business</em></h2>
-    <p><strong>Unit economics (conservative):</strong> Hardcover at A$69-79. Subscription at A$8.99/month (one book credit + digital library). Gross margin estimated at 45-55% at volume on print, 80%+ on digital. LTV model: ~A$966 per engaged family before siblings, gifting, or marketplace activity.</p>
-    <p><strong>Go to market:</strong> D2C, built around four compounding loops.</p>
-    <p><strong>Podcast and creator sponsorships</strong> are the primary paid channel — parenting and family lifestyle podcasts offer highly targeted audiences with strong purchase intent. Reach parents in their ears, send them something physical.</p>
-    <p><strong>Influencer and affiliate programme</strong> launches with the product. Books seed naturally into playgroups, school pickups, and grandparents' living rooms. Gifted-first creator seeding moves into a structured affiliate programme with tracked referral links as volume builds.</p>
-    <p><strong>Referral built into the product moment.</strong> When a parent creates a book, they can share it digitally with every family member and friend — grandparents, aunts, uncles, cousins. Each recipient creates a free account to securely view the book, which then lives in their own Kindred library. From there, they start their own Kindred journey. One book becomes the acquisition event for an entire family network.</p>
-    <p><strong>Subscription as a gifting gateway.</strong> Family members who discover Kindred through a shared book are the highest-converting new customers. A "gift a subscription" flow targets the moments that drive this naturally: baby showers, first birthdays, Mother's Day, Christmas. Gifting was mentioned unprompted by 7 of 10 validation interviewees.</p>
-    <p><strong>Defensibility:</strong> Psychology advisory relationships (Prof. Robyn Fivush, Dr. Erica Komisar), LoRA-trained illustration models, proprietary narrative pipeline, and longitudinal family data that compounds over time. The longer a family uses Kindred, the harder it is to replicate their experience elsewhere.</p>
+    <p class="section-lbl">Business model</p>
+    <h2>Audible-style credits. <em>Compounding LTV.</em></h2>
+    <p>Subscription-plus-credits model. Hardcover at A$69–79. Subscription from A$14.99/month. Gross margin 45–55% on print, 80%+ on digital. Conservative 5-year LTV per engaged family: <strong>~A$966</strong>, before siblings, gifting, or marketplace.</p>
+    <p>Go-to-market: concierge first (5–10 real family books before automating anything), then podcast sponsorships as primary paid channel, referral built into the product moment, and a gifting gateway targeting the November–December window. A personalised book about a child is one of the most natural Christmas gifts imaginable.</p>
   </div>
 
   <hr class="divider">
 
   <div class="section">
-    <h2>The <em>ask</em></h2>
-    <p>We're raising a small seed round — under A$250k — from the right people. Not VCs. Family offices, high net worth individuals, and operators who understand consumer products and care about what they're backing.</p>
-    <p><strong>What the capital is for:</strong> Accelerating development and getting to market faster. Specifically: engineering (1-2 additional developers to remove the current single-person bottleneck), LoRA illustration model training, and concierge phase print runs. Critically, we want to establish influencer seeding, affiliate relationships, and organic referral mechanics well ahead of the November-December gifting window — which we expect to be a significant early growth opportunity. A personalised book about a child is one of the most natural Christmas and holiday gifts imaginable, and we want to be ready for it.</p>
-    <p><strong>Instrument:</strong> SAFE note with a 20% discount at the first priced round. We're not assigning a valuation at this stage — that conversation happens after the concierge phase generates real outcome data.</p>
-    <div class="callout">
-      <p><strong>What we're not doing:</strong> We're not raising from people who'll want to direct the product. We're raising from people who believe in what we're building and want to be part of it early.</p>
+    <p class="section-lbl">Roadmap</p>
+    <h2>V1 to V3. <em>The pipeline already works.</em></h2>
+    <div class="phases">
+      <div class="phase">
+        <span class="phase-tag v1">V1 — Foundation</span>
+        <div class="phase-body"><strong>AU launch.</strong> D2C single purchase + subscription. Pipeline fully automated. Psychology advisory formalised.</div>
+      </div>
+      <div class="phase">
+        <span class="phase-tag v2">V2 — Living Book</span>
+        <div class="phase-body"><strong>US/UK expansion.</strong> Age-updating Living Book. Audible-style credit economy. Podcast-first growth.</div>
+      </div>
+      <div class="phase">
+        <span class="phase-tag v3">V3 — Depth</span>
+        <div class="phase-body"><strong>Category ownership.</strong> Outcome study with Fivush. Kindred Validated standard. Clinical referral pathway.</div>
+      </div>
     </div>
   </div>
 
   <hr class="divider">
 
   <div class="section">
-    <h2>The <em>founder</em></h2>
-    <p><strong>Matt Fern</strong> — founder of <a href="https://www.growthforpurpose.com" target="_blank" style="color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(196,97,74,.3)">Growth for Purpose</a>, a growth and lifecycle marketing agency that has built and scaled D2C consumer apps in the health, mental health, and family space. The agency has grown 10% month on month for the past four months. Kindred came directly from a personal pain point: reading to his two-year-old son every night and wishing the books were actually about their life together.</p>
-    <p>The product is already partially built. We have a working 10-agent pipeline generating watercolour-illustrated books from family photos, with two human review gates. The gap between where we are and a launchable product is weeks, not months.</p>
+    <p class="section-lbl">The ask</p>
+    <h2>Under A$250k. <em>Right people only.</em></h2>
+    <p>Not VCs. Family offices, HNW individuals, and operators who understand consumer products and care about what they're backing. Capital goes to: 1–2 additional engineers, LoRA model training, concierge phase print runs, and affiliate/influencer seeding ahead of the gifting window.</p>
+    <p><strong>Instrument:</strong> SAFE note, 20% discount at first priced round. No valuation assigned until the concierge phase generates real outcome data.</p>
+    <div class="callout sage">
+      <p><strong>What we're not doing:</strong> Raising from people who want to direct the product. Raising from people who believe in what we're building and want to be part of it early.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <p class="section-lbl">The founder</p>
+    <h2><em>Matt Fern</em></h2>
+    <p>Founder of <a href="https://www.growthforpurpose.com" target="_blank" style="color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(196,97,74,.3)">Growth for Purpose</a> — a growth and lifecycle marketing agency specialising in D2C consumer apps in health, mental health, and family. Kindred came directly from a personal pain point: reading to his two-year-old son every night and wanting the books to actually be about their life together. The working pipeline exists. The gap to a launchable product is weeks, not months.</p>
   </div>
 
 </div>
 
 <!-- CTA -->
 <section class="cta-section">
-  <p class="eyebrow" style="margin-bottom:14px">Get in touch</p>
+  <p class="eyebrow" style="color:var(--terra);margin-bottom:12px">Get in touch</p>
   <h2>Interested in <em>backing Kindred?</em></h2>
-  <p>We're having early conversations now. If this resonates, reach out directly.</p>
-  <a href="mailto:matt@growthforpurpose.com" class="btn">Email Matt directly</a>
-  <a href="/" class="btn-ghost">Back to site</a>
-  <p style="font-size:12px;color:var(--ghost);margin-top:20px">matt@growthforpurpose.com</p>
+  <p>Early conversations happening now. If this resonates — particularly if you're a parent who felt it — reach out directly.</p>
+  <div class="btn-row" style="margin-bottom:16px">
+    <a href="/kindred-pitch-deck-family-friends" class="btn-dark">View pitch deck</a>
+    <a href="mailto:matt@growthforpurpose.com" class="btn-ghost">Get in touch</a>
+  </div>
+  <p style="font-size:12px;color:var(--ghost)">matt@growthforpurpose.com · kindredbooks.ai</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <a href="/" style="text-decoration:none">
-    <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--muted)"><span style="color:var(--terra)">kind</span><span>red</span></span>
+  <a href="/" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1.1;opacity:0.55">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400"><span style="color:var(--terra)">kind</span><span style="color:#3D2018">red</span></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:400;letter-spacing:.18em;color:#3D2018">books</span>
   </a>
   <p class="fc">Confidential. Not for distribution. © 2026 Kindred Books.</p>
 </footer>
 
 <script>
-function attempt() {
-  var val = document.getElementById('pw-input').value;
-  if (val === 'kindredinvestor') {
-    sessionStorage.setItem('kindred_invest_auth', '1');
+function attempt(){
+  var val=document.getElementById('pw-input').value;
+  if(val==='kindredinvestor'){
+    sessionStorage.setItem('kindred_invest_auth','1');
     document.getElementById('pw-screen').classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.style.overflow='';
   } else {
-    document.getElementById('pw-err').textContent = 'Incorrect code. Try again.';
-    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-err').textContent='Incorrect code. Try again.';
+    document.getElementById('pw-input').value='';
     document.getElementById('pw-input').focus();
   }
 }
-
-(function() {
-  if (sessionStorage.getItem('kindred_invest_auth') !== '1') {
-    document.body.style.overflow = 'hidden';
+(function(){
+  if(sessionStorage.getItem('kindred_invest_auth')!=='1'){
+    document.body.style.overflow='hidden';
   } else {
     document.getElementById('pw-screen').classList.add('hidden');
   }
