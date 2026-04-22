@@ -1,5 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/invest", "destination": "/invest.html" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
